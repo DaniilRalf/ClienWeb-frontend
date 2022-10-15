@@ -1,19 +1,42 @@
 <p>authentication works!</p>
 
-<form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form class="form-horizontal" [formGroup]="registrationForm" (ngSubmit)="onSubmitRegist()">
 
     <div class="mb-3">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" id="username"
                placeholder="Username"
-               [ngClass]="{}"/>
+        />
     </div>
 
     <div class="mb-3">
         <label for="password">Password</label>
         <input type="text" formControlName="password" class="form-control" id="password"
                placeholder="Password"
-               [ngClass]="{}"/>
+        />
     </div>
+
+    <div class="mb-3">
+        <label for="firstname">Password</label>
+        <input type="text" formControlName="firstname" class="form-control" id="firstname"
+               placeholder="First Name"
+        />
+    </div>
+
+    <div class="mb-3">
+        <label for="lastname">Password</label>
+        <input type="text" formControlName="lastname" class="form-control" id="lastname"
+               placeholder="Last Name"
+        />
+    </div>
+
+    <div class="mb-3">
+        <label for="email">Password</label>
+        <input type="text" formControlName="email" class="form-control" id="email"
+               placeholder="Email"
+        />
+    </div>
+
+    <button type="submit">Registration</button>
 
 </form>

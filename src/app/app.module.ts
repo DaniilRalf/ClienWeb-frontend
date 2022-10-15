@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicLayoutModule } from './public-layout/public-layout.module';
 import { PanelComponent } from './admin-layout/panel/panel.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './helpers/request.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PanelComponent
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,9 @@ import { PanelComponent } from './admin-layout/panel/panel.component';
     AdminLayoutModule,
     PublicLayoutModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

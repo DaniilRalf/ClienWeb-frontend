@@ -1,0 +1,10 @@
+@import '../../../assets/scss/index.scss';
+
+.footer{
+    height: $header-footer_heigth;
+    background-color: $header-footer_color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

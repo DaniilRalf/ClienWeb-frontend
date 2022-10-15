@@ -1,4 +1,8 @@
-<p>main works!</p>
-<a [routerLink]="['/admin/panel']">Admin panel</a>
-<a [routerLink]="['/main', 'auth']">Auth</a>
-<router-outlet></router-outlet>
+<app-custom-header></app-custom-header>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+<app-custom-footer></app-custom-footer>
+
+
+
