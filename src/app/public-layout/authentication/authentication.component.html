@@ -1,0 +1,19 @@
+<p>authentication works!</p>
+
+<form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" id="username"
+               placeholder="Username"
+               [ngClass]="{}"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" class="form-control" id="password"
+               placeholder="Password"
+               [ngClass]="{}"/>
+    </div>
+
+</form>
