@@ -1,0 +1,21 @@
+@import '../../../assets/scss/index.scss';
+
+.header{
+    height: $header-footer_heigth;
+    background-color: $header-footer_color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+    &_logo{}
+
+    &_menu{
+        display: flex;
+
+        a{
+            text-decoration: none;
+            margin-left: 15px;
+        }
+    }
+}
