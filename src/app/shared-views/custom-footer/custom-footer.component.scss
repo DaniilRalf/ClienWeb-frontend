@@ -2,9 +2,13 @@
 
 .footer{
     height: $header-footer_heigth;
-    background-color: $header-footer_color;
+    background-color: $white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px;
 
+    div{
+        color: $btn_color;
+    }
 }

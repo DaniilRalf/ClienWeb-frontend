@@ -1,9 +1,12 @@
-<p>authentication works!</p>
+<app-title-heading 
+    [title]="'Login & Registration'"
+    [heading]="'If you are already registered on our site, please login or use the registration form'"
+></app-title-heading>
 
 
 <div class="change-form">
-    <div class="change-form_item" (click)="clickLogin()">login</div>
-    <div class="change-form_item" (click)="clickRegistration()">registration</div>
+    <div class="change-form_item cm-font_200_16" (click)="clickLogin()">Login</div>
+    <div class="change-form_item cm-font_200_16" (click)="clickRegistration()">Registration</div>
 </div>
 
 
@@ -11,35 +14,35 @@
     <form class="form-reg" [formGroup]="registrationForm" (ngSubmit)="onSubmitRegist()">
         <input type="text" 
             formControlName="username" 
-            class="cm-input form-reg_item" 
+            class="cm-input cm-font_500_16 form-reg_item" 
             id="username"
             placeholder="Username"
         />
         <input type="text" 
             formControlName="password" 
-            class="cm-input form-reg_item"  
+            class="cm-input cm-font_500_16 form-reg_item"  
             id="password"
             placeholder="Password"
         />
         <input type="text" 
             formControlName="firstname" 
-            class="cm-input form-reg_item"  
+            class="cm-input cm-font_500_16 form-reg_item"  
             id="firstname"
             placeholder="First Name"
         />
         <input type="text" 
             formControlName="lastname" 
-            class="cm-input form-reg_item"  
+            class="cm-input cm-font_500_16 form-reg_item"  
             id="lastname"
             placeholder="Last Name"
         />
         <input type="text" 
             formControlName="email" 
-            class="cm-input form-reg_item"  
+            class="cm-input cm-font_500_16 form-reg_item"  
             id="email"
             placeholder="Email"
         />
-        <button type="submit" class="cm-btn">Registration</button>
+        <button type="submit" class="cm-btn cm-font_200_16">Registration</button>
     </form>
 </div>
 
@@ -47,17 +50,17 @@
     <form class="form-reg" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
         <input type="text" 
             formControlName="username" 
-            class="cm-input form-reg_item" 
+            class="cm-input cm-font_500_16 form-reg_item" 
             id="username"
             placeholder="Username"
         />
         <input type="text" 
             formControlName="password" 
-            class="cm-input form-reg_item"  
+            class="cm-input cm-font_500_16 form-reg_item"  
             id="password"
             placeholder="Password"
         />
-        <button type="submit" class="cm-btn">Login</button>
+        <button type="submit" class="cm-btn cm-font_200_16">Login</button>
     </form>
 </div>
 
