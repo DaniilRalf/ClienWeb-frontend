@@ -26,10 +26,10 @@ export class AuthenticationComponent implements OnInit {
 
   public formBuildLogin(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl('asdv',[
+      username: new FormControl('',[
           Validators.required,
       ]),
-      password: new FormControl('sdv', [
+      password: new FormControl('', [
           Validators.required,
       ]),
     });
@@ -37,19 +37,19 @@ export class AuthenticationComponent implements OnInit {
 
   public formBuildRegist(): void {
     this.registrationForm = new FormGroup({
-      username: new FormControl('asdv',[
+      username: new FormControl('',[
           Validators.required,
       ]),
-      password: new FormControl('sdv', [
+      password: new FormControl('', [
           Validators.required,
       ]),
-      firstname: new FormControl('sdv', [
+      firstname: new FormControl('', [
           Validators.required
       ]),
-      lastname: new FormControl('sdv', [
+      lastname: new FormControl('', [
         Validators.required
       ]),
-      email: new FormControl('asdv', [
+      email: new FormControl('', [
         Validators.required
       ]),
     });
@@ -58,7 +58,7 @@ export class AuthenticationComponent implements OnInit {
   public onSubmitLogin(): void {
     console.dir(this.loginForm.value);
 
-    this.LoginService.loginRregistration(this.registrationForm.value)
+    this.LoginService.loginRregistration(this.loginForm.value)
                             .subscribe(i => {
                               console.log(i);
                             })

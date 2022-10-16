@@ -2,20 +2,23 @@
 
 .header{
     height: $header-footer_heigth;
-    background-color: $header-footer_color;
+    background-color: $white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
+
+    a{
+        text-decoration: none;
+        color: $btn_color;
+    }
 
     &_logo{}
 
     &_menu{
         display: flex;
-
         a{
-            text-decoration: none;
-            margin-left: 15px;
+            margin-left: 20px;
         }
     }
 }

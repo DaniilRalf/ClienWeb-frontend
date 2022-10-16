@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomHeaderComponent } from '../shared-views/custom-header/custom-header.component';
 import { CustomFooterComponent } from '../shared-views/custom-footer/custom-footer.component';
+import { TitleHeadingComponent } from '../shared-views/title-heading/title-heading.component';
+import { ReviewComponent } from './review/review.component';
 
 
 
@@ -16,6 +18,8 @@ import { CustomFooterComponent } from '../shared-views/custom-footer/custom-foot
     AuthenticationComponent,
     CustomHeaderComponent,
     CustomFooterComponent,
+    TitleHeadingComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,

@@ -2,11 +2,13 @@
 
 .change-form{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
 
     &_item{
         text-align: center;
-        width: 100px;
+        width: 150px;
         padding: 10px;
         border-radius: 10px;
         background-color: $btn_color;
