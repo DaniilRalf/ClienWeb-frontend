@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(
     private RegistrationService: RegistrationService,
+    private LoginService: LoginService,
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,11 @@ export class AuthenticationComponent implements OnInit {
 
   public onSubmitLogin(): void {
     console.dir(this.loginForm.value);
+
+    this.LoginService.loginRregistration(this.registrationForm.value)
+                            .subscribe(i => {
+                              console.log(i);
+                            })
     
   }
 
@@ -62,7 +69,7 @@ export class AuthenticationComponent implements OnInit {
     console.dir(this.registrationForm.value);
     
 
-    this.RegistrationService.create(this.registrationForm.value)
+    this.RegistrationService.loginRregistration(this.registrationForm.value)
                             .subscribe(i => {
                               console.log(i);
                             })

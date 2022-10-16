@@ -44,7 +44,7 @@
 </div>
 
 <div *ngIf="openForm === 'login'">
-    <form class="form-reg" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin">
+    <form class="form-reg" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
         <input type="text" 
             formControlName="username" 
             class="cm-input form-reg_item" 
