@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { RegistrationService } from 'src/app/services/registration.service';
 
 @Component({
@@ -8,12 +8,12 @@ import { RegistrationService } from 'src/app/services/registration.service';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
+  openForm = 'login';
   loginForm!: FormGroup;
   registrationForm!: FormGroup;
 
 
   constructor(
-    private formBuilder: FormBuilder,
     private RegistrationService: RegistrationService,
   ) { }
 
@@ -23,14 +23,17 @@ export class AuthenticationComponent implements OnInit {
   }
 
   public formBuildLogin(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+    this.loginForm = new FormGroup({
+      username: new FormControl('asdv',[
+          Validators.required,
+      ]),
+      password: new FormControl('sdv', [
+          Validators.required,
+      ]),
     });
   }
 
   public formBuildRegist(): void {
-
     this.registrationForm = new FormGroup({
       username: new FormControl('asdv',[
           Validators.required,
@@ -47,10 +50,11 @@ export class AuthenticationComponent implements OnInit {
       email: new FormControl('asdv', [
         Validators.required
       ]),
-  });
+    });
   }
 
   public onSubmitLogin(): void {
+    console.dir(this.loginForm.value);
     
   }
 
@@ -58,11 +62,19 @@ export class AuthenticationComponent implements OnInit {
     console.dir(this.registrationForm.value);
     
 
-    // this.RegistrationService.create(this.registrationForm.value)
-    //                         .subscribe(i => {
-    //                           console.log(i);
-    //                         })
+    this.RegistrationService.create(this.registrationForm.value)
+                            .subscribe(i => {
+                              console.log(i);
+                            })
 
+  }
+
+  public clickLogin(): void {
+    this.openForm = 'login';   
+  }
+
+  public clickRegistration(): void {
+    this.openForm = 'registration';
   }
 
 }

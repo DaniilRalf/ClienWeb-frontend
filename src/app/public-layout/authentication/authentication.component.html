@@ -1,42 +1,63 @@
 <p>authentication works!</p>
 
-<form class="form-horizontal" [formGroup]="registrationForm" (ngSubmit)="onSubmitRegist()">
 
-    <div class="mb-3">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" id="username"
-               placeholder="Username"
+<div class="change-form">
+    <div class="change-form_item" (click)="clickLogin()">login</div>
+    <div class="change-form_item" (click)="clickRegistration()">registration</div>
+</div>
+
+
+<div *ngIf="openForm === 'registration'">
+    <form class="form-reg" [formGroup]="registrationForm" (ngSubmit)="onSubmitRegist()">
+        <input type="text" 
+            formControlName="username" 
+            class="cm-input form-reg_item" 
+            id="username"
+            placeholder="Username"
         />
-    </div>
-
-    <div class="mb-3">
-        <label for="password">Password</label>
-        <input type="text" formControlName="password" class="form-control" id="password"
-               placeholder="Password"
+        <input type="text" 
+            formControlName="password" 
+            class="cm-input form-reg_item"  
+            id="password"
+            placeholder="Password"
         />
-    </div>
-
-    <div class="mb-3">
-        <label for="firstname">Password</label>
-        <input type="text" formControlName="firstname" class="form-control" id="firstname"
-               placeholder="First Name"
+        <input type="text" 
+            formControlName="firstname" 
+            class="cm-input form-reg_item"  
+            id="firstname"
+            placeholder="First Name"
         />
-    </div>
-
-    <div class="mb-3">
-        <label for="lastname">Password</label>
-        <input type="text" formControlName="lastname" class="form-control" id="lastname"
-               placeholder="Last Name"
+        <input type="text" 
+            formControlName="lastname" 
+            class="cm-input form-reg_item"  
+            id="lastname"
+            placeholder="Last Name"
         />
-    </div>
-
-    <div class="mb-3">
-        <label for="email">Password</label>
-        <input type="text" formControlName="email" class="form-control" id="email"
-               placeholder="Email"
+        <input type="text" 
+            formControlName="email" 
+            class="cm-input form-reg_item"  
+            id="email"
+            placeholder="Email"
         />
-    </div>
+        <button type="submit" class="cm-btn">Registration</button>
+    </form>
+</div>
 
-    <button type="submit">Registration</button>
+<div *ngIf="openForm === 'login'">
+    <form class="form-reg" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin">
+        <input type="text" 
+            formControlName="username" 
+            class="cm-input form-reg_item" 
+            id="username"
+            placeholder="Username"
+        />
+        <input type="text" 
+            formControlName="password" 
+            class="cm-input form-reg_item"  
+            id="password"
+            placeholder="Password"
+        />
+        <button type="submit" class="cm-btn">Login</button>
+    </form>
+</div>
 
-</form>

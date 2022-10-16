@@ -16,7 +16,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
     request = request.clone({
       headers: request.headers
-          .set('Access-Control-Allow-Origin', '*')
+          // .set('Access-Control-Allow-Origin', '*')
     });
 
     return next.handle(request);
