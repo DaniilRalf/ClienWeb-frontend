@@ -23,4 +23,18 @@ export class BaseService{
   }
 
 
+
+
+
+  logout() {
+    return this
+        .http
+        .get(environment.apiBaseUrl + '/api/logout');
+  }
+
+  loginRregistration(data: any) {
+    return this
+        .http
+        .post(environment.apiBaseUrl + this.entityUrlName, data);
+  }
 }
