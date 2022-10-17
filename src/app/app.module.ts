@@ -8,6 +8,7 @@ import { PublicLayoutModule } from './public-layout/public-layout.module';
 import { PanelComponent } from './admin-layout/panel/panel.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './helpers/request.interceptor';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RequestInterceptor } from './helpers/request.interceptor';
     PublicLayoutModule
   ],
   providers: [
+    CookieService,
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
 ],
   bootstrap: [AppComponent]

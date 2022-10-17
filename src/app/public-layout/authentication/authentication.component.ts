@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { TokenCookiesService } from 'src/app/services/token-cookies.service';
 
 @Component({
   selector: 'app-authentication',
@@ -17,6 +18,7 @@ export class AuthenticationComponent implements OnInit {
   constructor(
     private RegistrationService: RegistrationService,
     private LoginService: LoginService,
+    private TokenCookieService: TokenCookiesService,
   ) { }
 
   ngOnInit(): void {
@@ -58,22 +60,29 @@ export class AuthenticationComponent implements OnInit {
   public onSubmitLogin(): void {
     console.dir(this.loginForm.value);
 
-    this.LoginService.loginRregistration(this.loginForm.value)
-                            .subscribe(i => {
-                              console.log(i);
-                            })
+    // this.TokenCookieService.setCookie()
+    // console.log(this.TokenCookieService.getCookie());
     
+
+    this.LoginService.loginRregistration(this.loginForm.value)
+                            .subscribe((i: any) => {
+                              console.log(i);
+                              if(true){
+                                this.TokenCookieService.setCookie()
+                              } else{
+                                console.log('fghf');
+                              }
+                            })
   }
 
   public onSubmitRegist(): void {
     console.dir(this.registrationForm.value);
     
 
-    this.RegistrationService.loginRregistration(this.registrationForm.value)
-                            .subscribe(i => {
-                              console.log(i);
-                            })
-
+    // this.RegistrationService.loginRregistration(this.registrationForm.value)
+    //                         .subscribe(i => {
+    //                           console.log(i);
+    //                         })
   }
 
   public clickLogin(): void {
