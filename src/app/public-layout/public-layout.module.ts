@@ -9,7 +9,7 @@ import { CustomHeaderComponent } from '../shared-views/custom-header/custom-head
 import { CustomFooterComponent } from '../shared-views/custom-footer/custom-footer.component';
 import { TitleHeadingComponent } from '../shared-views/title-heading/title-heading.component';
 import { ReviewComponent } from './review/review.component';
-
+import { ErrorsNitificationComponent } from '../shared-views/errors-nitification/errors-nitification.component';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { ReviewComponent } from './review/review.component';
     CustomHeaderComponent,
     CustomFooterComponent,
     TitleHeadingComponent,
-    ReviewComponent
+    ReviewComponent,
+    ErrorsNitificationComponent
   ],
   imports: [
     CommonModule,

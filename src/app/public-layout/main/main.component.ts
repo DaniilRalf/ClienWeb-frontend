@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private StorageService: StorageService,
+    private cd: ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
+    this.checkAuth();
+  }
+
+  public checkAuth(): void{
+    this.StorageService.getUser();
   }
 
 }
