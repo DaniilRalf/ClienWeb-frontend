@@ -9,9 +9,13 @@
             [routerLink]="['/admin/panel']"
             class="cm-font_500_20"
         >Admin panel</a>
-        <a 
+        <a  *ngIf="!StorageService.jwt_token"
             [routerLink]="['/main', 'auth']"
             class="cm-font_500_20"
         >Auth</a>
+        <a  *ngIf="StorageService.jwt_token"
+            class="cm-font_500_20"
+            (click)="StorageService.delUser();"
+        >Logout</a>
     </div>
 </div>

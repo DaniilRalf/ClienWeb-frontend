@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-custom-header',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public StorageService: StorageService,
+  ) { }
 
   ngOnInit(): void {
   }
