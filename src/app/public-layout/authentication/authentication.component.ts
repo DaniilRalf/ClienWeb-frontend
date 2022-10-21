@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
-import { TokenCookiesService } from 'src/app/services/token-cookies.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-authentication',
@@ -13,15 +14,20 @@ export class AuthenticationComponent implements OnInit {
   openForm = 'login';
   loginForm!: FormGroup;
   registrationForm!: FormGroup;
+  arrErrors: any[] = [];
 
 
   constructor(
     private RegistrationService: RegistrationService,
     private LoginService: LoginService,
-    private TokenCookieService: TokenCookiesService,
+    private StorageService: StorageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    if(this.StorageService.jwt_token){
+      this.router.navigate(['/main', 'review']);
+    }
     this.formBuildLogin();
     this.formBuildRegist();
   }
@@ -30,59 +36,60 @@ export class AuthenticationComponent implements OnInit {
     this.loginForm = new FormGroup({
       username: new FormControl('',[
           Validators.required,
+          Validators.minLength(2),
       ]),
       password: new FormControl('', [
           Validators.required,
+          Validators.minLength(5),
       ]),
     });
   }
 
   public formBuildRegist(): void {
     this.registrationForm = new FormGroup({
-      username: new FormControl('',[
+      username: new FormControl('test1',[
           Validators.required,
+          Validators.minLength(2),
       ]),
-      password: new FormControl('', [
+      password: new FormControl('test1', [
           Validators.required,
+          Validators.minLength(5),
       ]),
-      firstname: new FormControl('', [
-          Validators.required
+      firstname: new FormControl('test1', [
+          Validators.required,
+          Validators.minLength(2),
       ]),
-      lastname: new FormControl('', [
-        Validators.required
+      lastname: new FormControl('test1', [
+        Validators.required,
+        Validators.minLength(2),
       ]),
-      email: new FormControl('', [
-        Validators.required
+      email: new FormControl('test1@test1.com', [
+        Validators.required,
+        Validators.email
       ]),
     });
   }
 
   public onSubmitLogin(): void {
-    console.dir(this.loginForm.value);
-
-    // this.TokenCookieService.setCookie()
-    // console.log(this.TokenCookieService.getCookie());
-    
-
     this.LoginService.loginRregistration(this.loginForm.value)
-                            .subscribe((i: any) => {
-                              console.log(i);
-                              if(true){
-                                this.TokenCookieService.setCookie()
-                              } else{
-                                console.log('fghf');
-                              }
+                            .subscribe((i:any) => {
+              
+                              this.StorageService.setUser(i);
+                              this.router.navigate(['/main', 'review']);
                             })
+    this.arrErrors = [];
+    this.getFormValidationErrors('login');
   }
 
   public onSubmitRegist(): void {
-    console.dir(this.registrationForm.value);
-    
-
-    // this.RegistrationService.loginRregistration(this.registrationForm.value)
-    //                         .subscribe(i => {
-    //                           console.log(i);
-    //                         })
+    this.RegistrationService.loginRregistration(this.registrationForm.value)
+                            .subscribe((i:any) => {
+                          
+                              this.StorageService.setUser(i);
+                              this.router.navigate(['/main', 'review']);
+                            })
+    this.arrErrors = [];
+    this.getFormValidationErrors('registration');
   }
 
   public clickLogin(): void {
@@ -93,4 +100,22 @@ export class AuthenticationComponent implements OnInit {
     this.openForm = 'registration';
   }
 
+
+  getFormValidationErrors(form: string) {
+    let nowForm: any;
+    if(form === 'registration'){
+      nowForm = this.registrationForm;
+    }
+    if(form === 'login'){
+      nowForm = this.loginForm;
+    }
+    Object.keys(nowForm.controls).forEach(key => {
+      const controlErrors: any = nowForm?.get(key)?.errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+        this.arrErrors.push({'key': key, 'error': keyError, 'detail': controlErrors[keyError]})
+        });
+      }
+    });
+  }
 }
