@@ -5,8 +5,8 @@ import { ChangeDetectorRef, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StorageService {
-  public jwt_token?: string | null;
-  public role?: string | null;
+  public jwt_token?: string | null | undefined;
+  public role?: string | null | undefined;
 
   constructor(
   ) { }

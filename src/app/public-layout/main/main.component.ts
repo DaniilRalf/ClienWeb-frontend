@@ -14,11 +14,11 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.checkAuth();
+    this.StorageService.getUser();
+
+    console.log(this.StorageService.getUser());
+    
   }
 
-  public checkAuth(): void{
-    this.StorageService.getUser();
-  }
 
 }

@@ -2,7 +2,7 @@
     max-width: $container;
     width: 100%;
     margin: auto;
-    padding: 15px;
+    padding: 20px;
 }
 
 .cm-input{
@@ -11,7 +11,7 @@
 
     padding: 10px 25px;
     border-radius: 10px;
-    border-color: $input_color;
+    border-color: $edition_2;
 }
 .cm-btn{
     max-width: 500px;
@@ -20,6 +20,6 @@
     padding: 10px 25px;
     border-radius: 10px;
     color: $white;
-    background-color: $btn_color;
+    background-color: $edition_2;
     border: none;
 }

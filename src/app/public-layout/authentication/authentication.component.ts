@@ -74,8 +74,11 @@ export class AuthenticationComponent implements OnInit {
     this.LoginService.loginRregistration(this.loginForm.value)
                             .subscribe((i:any) => {
               
-                              this.StorageService.setUser(i);
-                              this.router.navigate(['/main', 'review']);
+                              console.log(i);
+                              // if(i.jwt_token && i.role){
+                                this.StorageService.setUser(i);
+                                this.router.navigate(['/main', 'review']);
+                              // }
                             })
     this.arrErrors = [];
     this.getFormValidationErrors('login');
@@ -85,8 +88,11 @@ export class AuthenticationComponent implements OnInit {
     this.RegistrationService.loginRregistration(this.registrationForm.value)
                             .subscribe((i:any) => {
                           
-                              this.StorageService.setUser(i);
-                              this.router.navigate(['/main', 'review']);
+                              console.log(i);
+                              // if(i.jwt_token && i.role){
+                                this.StorageService.setUser(i);
+                                this.router.navigate(['/main', 'review']);
+                              // }
                             })
     this.arrErrors = [];
     this.getFormValidationErrors('registration');

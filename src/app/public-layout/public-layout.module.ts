@@ -5,26 +5,24 @@ import { MainComponent } from './main/main.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CustomHeaderComponent } from '../shared-views/custom-header/custom-header.component';
-import { CustomFooterComponent } from '../shared-views/custom-footer/custom-footer.component';
 import { TitleHeadingComponent } from '../shared-views/title-heading/title-heading.component';
 import { ReviewComponent } from './review/review.component';
 import { ErrorsNitificationComponent } from '../shared-views/errors-nitification/errors-nitification.component';
+import { SharedViewModule } from '../shared-views/shared-views.module';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     AuthenticationComponent,
-    CustomHeaderComponent,
-    CustomFooterComponent,
-    TitleHeadingComponent,
     ReviewComponent,
-    ErrorsNitificationComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
+
+    SharedViewModule,
+
     ReactiveFormsModule,
     HttpClientModule
   ]
