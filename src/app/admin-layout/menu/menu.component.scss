@@ -1,0 +1,18 @@
+@import '../../../assets/scss/index.scss';
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: $border-radius_1;
+    background-color: $edition_1;
+
+    &_item{
+        color: $edition_2;
+        text-decoration: none;
+    }
+
+    &_item:not(:last-child){
+        margin-bottom: 15px;
+    }
+}

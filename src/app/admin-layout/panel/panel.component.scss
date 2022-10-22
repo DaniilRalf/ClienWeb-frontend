@@ -1,0 +1,17 @@
+@import '../../../assets/scss/index.scss';
+
+.panel{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+    &_menu{
+        width: 28%;
+        min-width: 200px;
+        margin-right: 20px;
+    }
+
+    &_content{
+        width: 70%;
+    }
+}

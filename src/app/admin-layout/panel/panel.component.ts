@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-panel',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private StorageService: StorageService,
+  ) { }
 
   ngOnInit(): void {
+    this.StorageService.getUser();
   }
 
 }
