@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {StorageService} from "./services/storage.service";
 import {ProfileService} from "./services/profile.service";
 import {UserInterface} from "./models/user";
-import {Observer} from "rxjs";
 
 @Component({
   selector: 'app-root',

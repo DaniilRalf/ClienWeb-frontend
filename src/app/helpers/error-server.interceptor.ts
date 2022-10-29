@@ -26,6 +26,9 @@ export class ErrorServerInterceptor implements HttpInterceptor {
               case 0:
                 this.StorageService.responseNotificationChange('Unknown error');
                 break;
+              case 400:
+                this.StorageService.responseNotificationChange('Not correct data');
+                break;
               case 403:
                 this.StorageService.responseNotificationChange('Not authorization');
                 this.StorageService.delUser();

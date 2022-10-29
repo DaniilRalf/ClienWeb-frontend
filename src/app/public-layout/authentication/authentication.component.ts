@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { StorageService } from 'src/app/services/storage.service';
 import {ProfileService} from "../../services/profile.service";
+import {UserInterface} from "../../models/user";
 
 @Component({
   selector: 'app-authentication',
@@ -81,8 +82,10 @@ export class AuthenticationComponent implements OnInit {
                                 this.StorageService.setUser(i);
                                 this.router.navigate(['/main', 'review']);
                                 this.ProfileService.getAll()
-                                  .subscribe(i => {
-                                    console.log(i)
+                                  .subscribe((item: UserInterface) => {
+                                    this.StorageService.USER = item;
+
+                                    console.log(this.StorageService.USER)
                                   })
                               }
                             })
@@ -99,8 +102,10 @@ export class AuthenticationComponent implements OnInit {
                                 this.StorageService.setUser(i);
                                 this.router.navigate(['/main', 'review']);
                                 this.ProfileService.getAll()
-                                  .subscribe(i => {
-                                    console.log(i)
+                                  .subscribe((item: UserInterface) => {
+                                    this.StorageService.USER = item;
+
+                                    console.log(this.StorageService.USER)
                                   })
                               }
                             })
