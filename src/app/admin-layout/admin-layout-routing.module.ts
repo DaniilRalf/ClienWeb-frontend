@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InfoComponent } from './info/info.component';
 import { PanelComponent } from './panel/panel.component';
-import { SetupComponent } from './setup/setup.component';
 import {AdminRouteGuard} from "../helpers/admin-route.guard";
 
 const routes: Routes = [
@@ -15,11 +14,6 @@ const routes: Routes = [
         {
           path: 'info',
           component: InfoComponent,
-          children: []
-        },
-        {
-          path: 'setup',
-          component: SetupComponent,
           children: []
         },
       ]
