@@ -3,9 +3,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
-import {catchError, Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {StorageService} from "../services/storage.service";
 
 @Injectable()
@@ -15,29 +15,17 @@ export class ResponseInterceptor implements HttpInterceptor {
     private StorageService: StorageService,
   ) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-    next.handle(request).subscribe((i:any) => {
-      if (i.body?.result == false){
-        this.StorageService.responseNotificationChange(i.body?.message);
-        // console.log(i.body?.message)
-      }
-    })
-
-    // @ts-ignore
-    return next.handle(request).pipe(catchError((arr: any): any => {
-      // console.log(arr);
-      switch (arr.status){
-        case 0:
-          this.StorageService.responseNotificationChange('Unknown error');
-          // console.log('Unknown error');
-          break;
-        case 404:
-          this.StorageService.responseNotificationChange('Server Error');
-          // console.log('Server Error');
-          break;
-      }
-
-    }));
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      tap(
+        (res: any) => {
+          console.log(res)
+          if (res.body?.result == false){
+            this.StorageService
+              .responseNotificationChange(res.body?.message || res.body?.email || res.body?.username);
+          }
+        }
+      )
+    )
   }
 }

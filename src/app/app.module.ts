@@ -9,9 +9,8 @@ import { RequestInterceptor } from './helpers/request.interceptor';
 
 import { AppComponent } from './app.component';
 import { SharedViewModule } from './shared-views/shared-views.module';
-import { PublicRoutingModule } from './public-layout/public-layout-routing.module';
-import { AdminRoutingModule } from './admin-layout/admin-layout-routing.module';
 import {ResponseInterceptor} from "./helpers/response.interceptor";
+import {ErrorServerInterceptor} from "./helpers/error-server.interceptor";
 
 
 
@@ -31,6 +30,7 @@ import {ResponseInterceptor} from "./helpers/response.interceptor";
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorServerInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

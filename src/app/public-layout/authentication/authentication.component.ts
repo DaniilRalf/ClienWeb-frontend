@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { StorageService } from 'src/app/services/storage.service';
+import {ProfileService} from "../../services/profile.service";
 
 @Component({
   selector: 'app-authentication',
@@ -21,6 +22,7 @@ export class AuthenticationComponent implements OnInit {
     private RegistrationService: RegistrationService,
     private LoginService: LoginService,
     private StorageService: StorageService,
+    private ProfileService: ProfileService,
     private router: Router
   ) { }
 
@@ -47,23 +49,23 @@ export class AuthenticationComponent implements OnInit {
 
   public formBuildRegist(): void {
     this.registrationForm = new FormGroup({
-      username: new FormControl('test1',[
+      username: new FormControl('test2',[
           Validators.required,
           Validators.minLength(2),
       ]),
-      password: new FormControl('test1', [
+      password: new FormControl('test2', [
           Validators.required,
           Validators.minLength(5),
       ]),
-      firstname: new FormControl('test1', [
+      firstname: new FormControl('test2', [
           Validators.required,
           Validators.minLength(2),
       ]),
-      lastname: new FormControl('test1', [
+      lastname: new FormControl('test2', [
         Validators.required,
         Validators.minLength(2),
       ]),
-      email: new FormControl('test1@test1.com', [
+      email: new FormControl('test2@test2.com', [
         Validators.required,
         Validators.email
       ]),
@@ -78,6 +80,10 @@ export class AuthenticationComponent implements OnInit {
                               if(i.token && i.role){
                                 this.StorageService.setUser(i);
                                 this.router.navigate(['/main', 'review']);
+                                this.ProfileService.getAll()
+                                  .subscribe(i => {
+                                    console.log(i)
+                                  })
                               }
                             })
     this.arrErrors = [];
@@ -92,6 +98,10 @@ export class AuthenticationComponent implements OnInit {
                               if(i.token && i.role){
                                 this.StorageService.setUser(i);
                                 this.router.navigate(['/main', 'review']);
+                                this.ProfileService.getAll()
+                                  .subscribe(i => {
+                                    console.log(i)
+                                  })
                               }
                             })
     this.arrErrors = [];

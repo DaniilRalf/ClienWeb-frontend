@@ -15,7 +15,7 @@ export class AdminRouteGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return !!this.StorageService.token;
+    return !!this.StorageService.getUser().token;
   }
 
 }

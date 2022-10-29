@@ -17,14 +17,12 @@ export class RequestInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    if (this.StorageService.token) {
-        request = request.clone({
-            headers: request.headers
-                .set('Authorization', 'Bearer ' + this.StorageService.token)
-        });
+    if (this.StorageService.token){
+      request = request.clone({
+        headers: request.headers
+          .set('Authorization', 'Bearer ' + this.StorageService.token)
+      });
     }
-
     return next.handle(request);
   }
 }
