@@ -6,6 +6,7 @@ import { SharedViewModule } from '../shared-views/shared-views.module';
 import { InfoComponent } from './info/info.component';
 import { MenuComponent } from './menu/menu.component';
 import { SetupComponent } from './setup/setup.component';
+import {AdminRouteGuard} from "../helpers/admin-route.guard";
 
 
 
@@ -22,5 +23,6 @@ import { SetupComponent } from './setup/setup.component';
 
     SharedViewModule,
   ],
+  providers: [AdminRouteGuard]
 })
 export class AdminLayoutModule { }

@@ -1,19 +1,19 @@
 <div class="header">
     <div class="header_logo">
-        <a 
+        <a
             [routerLink]="['/main', 'review']"
             class="cm-font_500_20"
         >Logo\Name</a></div>
     <div class="header_menu">
-        <a 
-            [routerLink]="['/admin/panel']"
+        <a
+            [routerLink]="StorageService.token ? ['/admin/panel'] : ['/main', 'auth']"
             class="cm-font_500_20"
         >Admin panel</a>
-        <a  *ngIf="!StorageService.jwt_token"
+        <a  *ngIf="!StorageService.token"
             [routerLink]="['/main', 'auth']"
             class="cm-font_500_20"
         >Auth</a>
-        <a  *ngIf="StorageService.jwt_token"
+        <a  *ngIf="StorageService.token"
             class="cm-font_500_20"
             (click)="StorageService.delUser();"
         >Logout</a>

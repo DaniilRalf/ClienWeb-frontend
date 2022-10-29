@@ -25,7 +25,7 @@ export class AuthenticationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.StorageService.jwt_token){
+    if(this.StorageService.token){
       this.router.navigate(['/main', 'review']);
     }
     this.formBuildLogin();
@@ -73,12 +73,12 @@ export class AuthenticationComponent implements OnInit {
   public onSubmitLogin(): void {
     this.LoginService.loginRregistration(this.loginForm.value)
                             .subscribe((i:any) => {
-              
+
                               console.log(i);
-                              // if(i.jwt_token && i.role){
+                              if(i.token && i.role){
                                 this.StorageService.setUser(i);
                                 this.router.navigate(['/main', 'review']);
-                              // }
+                              }
                             })
     this.arrErrors = [];
     this.getFormValidationErrors('login');
@@ -87,19 +87,19 @@ export class AuthenticationComponent implements OnInit {
   public onSubmitRegist(): void {
     this.RegistrationService.loginRregistration(this.registrationForm.value)
                             .subscribe((i:any) => {
-                          
+
                               console.log(i);
-                              // if(i.jwt_token && i.role){
+                              if(i.token && i.role){
                                 this.StorageService.setUser(i);
                                 this.router.navigate(['/main', 'review']);
-                              // }
+                              }
                             })
     this.arrErrors = [];
     this.getFormValidationErrors('registration');
   }
 
   public clickLogin(): void {
-    this.openForm = 'login';   
+    this.openForm = 'login';
   }
 
   public clickRegistration(): void {
