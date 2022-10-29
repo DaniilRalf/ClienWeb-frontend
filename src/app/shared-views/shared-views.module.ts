@@ -8,6 +8,7 @@ import { TitleHeadingComponent } from './title-heading/title-heading.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublicRoutingModule } from '../public-layout/public-layout-routing.module';
 import { AdminRoutingModule } from '../admin-layout/admin-layout-routing.module';
+import { ResponseNotificationComponent } from './response-notification/response-notification.component';
 
 
 
@@ -16,13 +17,15 @@ import { AdminRoutingModule } from '../admin-layout/admin-layout-routing.module'
     CustomFooterComponent,
     CustomHeaderComponent,
     ErrorsNitificationComponent,
-    TitleHeadingComponent
+    TitleHeadingComponent,
+    ResponseNotificationComponent
   ],
   exports: [
     CustomFooterComponent,
     CustomHeaderComponent,
     ErrorsNitificationComponent,
-    TitleHeadingComponent
+    TitleHeadingComponent,
+    ResponseNotificationComponent
   ],
   imports: [
     CommonModule,

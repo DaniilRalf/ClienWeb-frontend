@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { SharedViewModule } from './shared-views/shared-views.module';
 import { PublicRoutingModule } from './public-layout/public-layout-routing.module';
 import { AdminRoutingModule } from './admin-layout/admin-layout-routing.module';
+import {ResponseInterceptor} from "./helpers/response.interceptor";
 
 
 
@@ -18,17 +19,19 @@ import { AdminRoutingModule } from './admin-layout/admin-layout-routing.module';
   declarations: [
     AppComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
 
-    ReactiveFormsModule,
+        ReactiveFormsModule,
 
-    AdminLayoutModule,
-    PublicLayoutModule,
-  ],
+        AdminLayoutModule,
+        PublicLayoutModule,
+        SharedViewModule,
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
