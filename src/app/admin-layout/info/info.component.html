@@ -1,1 +1,14 @@
 <h1 class="cm-font_500_34 title">Personal information</h1>
+
+<div class="personal">
+
+  <h3>Profile data</h3>
+  <div class="">firstname - <span>{{StorageService.USER?.firstname}}</span></div>
+  <div class="">lastname - <span>{{StorageService.USER?.lastname}}</span></div>
+  <div class="">username - <span>{{StorageService.USER?.username}}</span></div>
+
+  <h3>Contact data</h3>
+  <div class="" *ngFor="let i of StorageService.USER?.userContact">
+    {{i.type}} - {{i.contact}}
+  </div>
+</div>

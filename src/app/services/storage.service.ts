@@ -1,15 +1,18 @@
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import {Router} from "@angular/router";
+import {UserInterface} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
+  public USER?: UserInterface;
   public token?: string | null | undefined;
   public role?: string | null | undefined;
-  public responseNotificationClass = 'response-notification-off'
-  public responseNotificationMessage = 'response-notification-off'
+  public responseNotificationClass = 'response-notification-off';
+  public responseNotificationMessage = 'response-notification-off';
+
 
   constructor(
     private router: Router,
