@@ -1,4 +1,4 @@
-<mat-tab-group (change)="changeTabs()">
+<mat-tab-group>
   <mat-tab label="Логин">
     <ng-container *ngTemplateOutlet="login"></ng-container>
   </mat-tab>
@@ -22,7 +22,7 @@
           />
           <button *ngIf="item === 'password'"
                   mat-icon-button matSuffix
-                  (click)="showPassword = !showPassword">
+                  (click)="changeShowPassword($event)">
             <mat-icon>{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>

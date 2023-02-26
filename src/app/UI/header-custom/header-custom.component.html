@@ -1,9 +1,12 @@
 <div class="header">
   <div class="header-content container">
+
     <p>LOGO</p>
+
     <div class="header-content-active">
-      <p *ngIf="true">Имя</p>
-      <p (click)="openModal()">Войти</p>
+      <p (click)="checkTokenForHeader() ? logout() : openModal()"
+      >{{checkTokenForHeader() ? 'Выйти' : 'Войти'}}</p>
     </div>
+
   </div>
 </div>

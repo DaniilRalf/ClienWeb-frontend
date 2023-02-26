@@ -6,6 +6,7 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { PublicModule } from "./pages/public/public.module"
 import { UiModule } from "./UI/ui.module"
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UiModule } from "./UI/ui.module"
         AppRoutingModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
+        HttpClientModule,
 
         PublicModule,
         UiModule,

@@ -19,8 +19,9 @@ export class ModalLoginAuthComponent implements OnInit {
     this.formBuild()
   }
 
-  public changeTabs(): void {
-
+  public changeShowPassword(event: MouseEvent): void {
+    event.preventDefault()
+    this.showPassword = !this.showPassword
   }
 
   private formBuild(): void {
@@ -61,7 +62,7 @@ export class ModalLoginAuthComponent implements OnInit {
 
   public onSubmit(tag: 'loginForm' | 'registrationForm'): void {
     if (this[tag].status === 'VALID') {
-      const outputData: {tag: string, data: LoginRegistrationInterface} = {
+      const outputData: {tag: 'loginForm' | 'registrationForm', data: LoginRegistrationInterface} = {
         tag,
         data: this[tag].value
       }
