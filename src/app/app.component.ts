@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {StorageService} from "./services/storage.service";
-import {ProfileService} from "./services/profile.service";
-import {UserInterface} from "./models/user";
 
 @Component({
   selector: 'app-root',
@@ -11,21 +8,9 @@ import {UserInterface} from "./models/user";
 export class AppComponent implements OnInit{
   title = 'clientWeb-frontend';
 
-  constructor(
-    public StorageService: StorageService,
-    private ProfileService: ProfileService,
-  ) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.StorageService.getUser();
-    if (this.StorageService.token){
-      this.ProfileService.getAll()
-        .subscribe((item: UserInterface) => {
-          this.StorageService.USER = item;
-
-          console.log(this.StorageService.USER)
-        })
-    }
   }
 }
