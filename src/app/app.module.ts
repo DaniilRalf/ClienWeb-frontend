@@ -1,9 +1,11 @@
-import {  NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-
+import {  NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { AppRoutingModule } from './app-routing.module'
+import { ReactiveFormsModule } from '@angular/forms'
+import { AppComponent } from './app.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { PublicModule } from "./pages/public/public.module"
+import { UiModule } from "./UI/ui.module"
 
 @NgModule({
   declarations: [
@@ -13,6 +15,10 @@ import { AppComponent } from './app.component';
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+
+        PublicModule,
+        UiModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
