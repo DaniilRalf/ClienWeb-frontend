@@ -1,0 +1,25 @@
+@import "../../../assets/scss/index";
+
+.header {
+  width: 100%;
+  background-color: $main_color;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+    color: $white_color;
+
+    &-active {
+      display: flex;
+
+      p:first-child {
+        margin-right: 20px;
+      }
+      p:last-child {
+        cursor: pointer;
+      }
+    }
+  }
+}

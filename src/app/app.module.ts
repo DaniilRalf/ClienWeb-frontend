@@ -1,18 +1,12 @@
-import {  NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AdminLayoutModule } from './admin-layout/admin-layout.module';
-import { PublicLayoutModule } from './public-layout/public-layout.module';
-import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RequestInterceptor } from './helpers/request.interceptor';
-
-import { AppComponent } from './app.component';
-import { SharedViewModule } from './shared-views/shared-views.module';
-import {ResponseInterceptor} from "./helpers/response.interceptor";
-import {ErrorServerInterceptor} from "./helpers/error-server.interceptor";
-
-
+import {  NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { AppRoutingModule } from './app-routing.module'
+import { ReactiveFormsModule } from '@angular/forms'
+import { AppComponent } from './app.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { PublicModule } from "./pages/public/public.module"
+import { UiModule } from "./UI/ui.module"
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,18 +15,14 @@ import {ErrorServerInterceptor} from "./helpers/error-server.interceptor";
     imports: [
         BrowserModule,
         AppRoutingModule,
-
         ReactiveFormsModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
 
-        AdminLayoutModule,
-        PublicLayoutModule,
-        SharedViewModule,
+        PublicModule,
+        UiModule,
     ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorServerInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true},
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,50 @@
+<mat-tab-group>
+  <mat-tab label="Логин">
+    <ng-container *ngTemplateOutlet="login"></ng-container>
+  </mat-tab>
+  <mat-tab label="Авторизация">
+    <ng-container *ngTemplateOutlet="registration"></ng-container>
+  </mat-tab>
+</mat-tab-group>
+
+
+<ng-template #login>
+    <form class="form"
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit('loginForm')"
+    >
+      <ng-container *ngFor="let item of ['username', 'password']">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your {{item}}</mat-label>
+          <input matInput type="text"
+                 [type]="(showPassword && item === 'password') ? 'password' : 'text'"
+                 formControlName="{{item}}"
+          />
+          <button *ngIf="item === 'password'"
+                  mat-icon-button matSuffix
+                  (click)="changeShowPassword($event)">
+            <mat-icon>{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </ng-container>
+      <button mat-flat-button color="primary" type="submit">Войти</button>
+    </form>
+</ng-template>
+
+<ng-template #registration>
+  <form class="form"
+        [formGroup]="registrationForm"
+        (ngSubmit)="onSubmit('registrationForm')"
+  >
+    <ng-container *ngFor="let item of ['username', 'firstname', 'lastname', 'email', 'password']">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your {{item}}</mat-label>
+        <input matInput type="text"
+               [type]="'text'"
+               formControlName="{{item}}"
+        />
+      </mat-form-field>
+    </ng-container>
+    <button mat-flat-button color="primary" type="submit">Войти</button>
+  </form>
+</ng-template>
