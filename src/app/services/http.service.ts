@@ -10,15 +10,26 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  public login(data: LoginRegistrationInterface) {
+  //TODO types
+  public login(data: LoginRegistrationInterface): any {
     return this.http.post(
       environment.apiBaseUrl + 'api/auth/login', data
     )
   }
 
-  public registration(data: LoginRegistrationInterface) {
+  //TODO types
+  public registration(data: LoginRegistrationInterface): any {
     return this.http.post(
       environment.apiBaseUrl + 'api/registration', data
     )
   }
+
+  //TODO types
+  public getUserData(): any {
+    return this.http.get(
+      environment.apiBaseUrl + 'api/profile'
+    )
+  }
+
+
 }

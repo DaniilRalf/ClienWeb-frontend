@@ -1,11 +1,16 @@
 <div class="header">
   <div class="header-content container">
 
-    <p>LOGO</p>
+    <p (click)="publicNavigate()">LOGO</p>
 
     <div class="header-content-active">
+
+      <p (click)="personalNavigate()" *ngIf="checkTokenForHeader()"
+      >Личный кабинет</p>
+
       <p (click)="checkTokenForHeader() ? logout() : openModal()"
       >{{checkTokenForHeader() ? 'Выйти' : 'Войти'}}</p>
+
     </div>
 
   </div>

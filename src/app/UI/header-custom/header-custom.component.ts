@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {ModalLoginAuthComponent} from "../modal-login-auth/modal-login-auth.component";
-import {switchMap} from "rxjs";
-import {HttpService} from "../../services/http.service";
-import {LoginRegistrationInterface} from "../../models/types/login-registration.interface";
-import {LocalStorageService} from "../../services/local-storage.service";
+import { Component, OnInit } from '@angular/core'
+import { MatDialog } from "@angular/material/dialog"
+import { ModalLoginAuthComponent } from "../modal-login-auth/modal-login-auth.component"
+import { filter, switchMap } from "rxjs"
+import { HttpService } from "../../services/http.service"
+import { LoginRegistrationInterface } from "../../models/types/login-registration.interface"
+import { LocalStorageService } from "../../services/local-storage.service"
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-header-custom',
@@ -14,6 +15,7 @@ import {LocalStorageService} from "../../services/local-storage.service";
 export class HeaderCustomComponent implements OnInit {
 
   constructor(
+    private router: Router,
     private dialog: MatDialog,
     private httpService: HttpService,
     private localStorageService: LocalStorageService) { }
@@ -25,6 +27,7 @@ export class HeaderCustomComponent implements OnInit {
     this.dialog
       .open(ModalLoginAuthComponent, {})
       .afterClosed().pipe(
+        filter((outputData) => outputData !== undefined),
         switchMap((outputData: {tag: 'loginForm' | 'registrationForm', data: LoginRegistrationInterface}) => {
           if (outputData.tag === 'loginForm') {
             return this.httpService.login(outputData.data)
@@ -32,7 +35,7 @@ export class HeaderCustomComponent implements OnInit {
             return this.httpService.registration(outputData.data)
           }
         })
-    ).subscribe((req: any) => {
+    ).subscribe((req?: any) => {
       if (req.result === true) {
         this.localStorageService.setLocalStorageItem('token', req.token)
       }
@@ -41,10 +44,19 @@ export class HeaderCustomComponent implements OnInit {
 
   public logout(): void {
     this.localStorageService.removeLocalStorageItem('token')
+    this.publicNavigate()
   }
 
   public checkTokenForHeader(): boolean {
     return !!this.localStorageService.getLocalStorageItem('token')
+  }
+
+  public personalNavigate(): void {
+    this.router.navigate(['/personal'])
+  }
+
+  public publicNavigate(): void {
+    this.router.navigate(['/'])
   }
 
 }

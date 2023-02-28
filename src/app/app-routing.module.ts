@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AppComponent} from "./app.component";
 import {MainComponent} from "./pages/public/main/main.component";
+import {PersonalComponent} from "./pages/personal/personal/personal.component";
 
 const routes: Routes = [
 
@@ -19,7 +19,7 @@ const routes: Routes = [
 
   {
     path: 'personal',
-    component: AppComponent,
+    component: PersonalComponent,
     children: []
   },
 
