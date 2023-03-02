@@ -1,0 +1,50 @@
+@import "../../../../assets/scss/index.scss";
+
+.public {
+
+  &-description {
+    margin-top: 20px;
+    padding: 90px 20px;
+    border-radius: 10px;
+    background-color: $suppl_color;
+  }
+
+  &-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      cursor: pointer;
+
+      &__img {
+        width: 50%;
+        padding: 70px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        background-color: $main_color;
+
+        h1 {
+          color: $white_color;
+          margin: 0;
+        }
+        .icon {
+          color: $white_color;
+          transform: scale(3);
+          margin-right: 30px;
+        }
+      }
+      &__txt {
+        width: 50%;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

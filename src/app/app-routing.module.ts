@@ -1,19 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from "./pages/public/main/main.component";
+import { PublicComponent } from "./pages/public/public/public.component";
 import { PersonalComponent } from "./pages/personal/personal/personal.component";
 import { PersonalMyPageComponent } from "./pages/personal/personal-my-page/personal-my-page.component";
 import { PersonalAddMaterialsComponent } from "./pages/personal/personal-add-materials/personal-add-materials.component";
+import {BooksComponent} from "./pages/public/books/books.component";
+import {CoursesComponent} from "./pages/public/cources/courses.component";
+import {PublicInfoComponent} from "./pages/public/public-info/public-info.component";
 
 const routes: Routes = [
 
   {
     path: '',
-    component: MainComponent,
+    component: PublicComponent,
     children: [
+        {path: '', redirectTo: 'main', pathMatch: 'full'},
+        {
+          path: 'main',
+          component: PublicInfoComponent,
+          children: []
+        },
         {
           path: 'books',
-          component: MainComponent,
+          component: BooksComponent,
+          children: []
+        },
+        {
+          path: 'courses',
+          component: CoursesComponent,
           children: []
         },
     ]

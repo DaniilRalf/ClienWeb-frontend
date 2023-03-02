@@ -12,10 +12,12 @@ import { PersonalAddMaterialsComponent } from './personal-add-materials/personal
 
 const allComponents = [
   PersonalComponent,
+  PersonalMyPageComponent,
+  PersonalAddMaterialsComponent,
 ]
 
 @NgModule({
-  declarations: [...allComponents, PersonalMyPageComponent, PersonalAddMaterialsComponent],
+  declarations: [...allComponents],
   exports: [...allComponents],
   imports: [
     CommonModule,
