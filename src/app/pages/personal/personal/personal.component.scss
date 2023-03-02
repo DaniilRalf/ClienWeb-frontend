@@ -1,0 +1,45 @@
+@import "../../../../assets/scss/index.scss";
+
+
+.personal {
+
+  &-menu {
+
+    &-item {
+      padding: 10px 20px 10px 0;
+      display: flex;
+      align-items: center;
+
+      .icon{
+        margin-right: 5px;
+        color: #3f51b5;
+      }
+    }
+  }
+  &-content {
+    position: relative;
+    //height: auto;
+    height: 100vh;
+
+    &-toggle {
+      display: inline-block;
+      position: absolute;
+      background-color: #3f51b5;
+      border-radius: 50%;
+      padding: 7px 8px;
+      height: 40px;
+      width: 40px;
+
+      .icon{
+        color: white;
+      }
+    }
+  }
+}
+
+.mat-drawer-side {
+  border-right: none;
+}
+.mat-drawer-container {
+  background-color: transparent;
+}

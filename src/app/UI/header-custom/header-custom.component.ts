@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog } from "@angular/material/dialog"
 import { ModalLoginAuthComponent } from "../modal-login-auth/modal-login-auth.component"
-import { filter, switchMap } from "rxjs"
+import {filter, switchMap, take} from "rxjs"
 import { HttpService } from "../../services/http.service"
 import { LoginRegistrationInterface } from "../../models/types/login-registration.interface"
 import { LocalStorageService } from "../../services/local-storage.service"
@@ -18,7 +18,8 @@ export class HeaderCustomComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private httpService: HttpService,
-    private localStorageService: LocalStorageService) { }
+    private localStorageService: LocalStorageService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +35,8 @@ export class HeaderCustomComponent implements OnInit {
           } else {
             return this.httpService.registration(outputData.data)
           }
-        })
+        }),
+        take(1)
     ).subscribe((req?: any) => {
       if (req.result === true) {
         this.localStorageService.setLocalStorageItem('token', req.token)

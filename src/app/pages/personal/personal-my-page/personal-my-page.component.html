@@ -1,0 +1,8 @@
+<div class="my-page">
+  <h2>Персональная информация</h2>
+  <p>Логин - {{(userDataObs | async)?.username}}</p>
+  <p>Имя - {{(userDataObs | async)?.firstname}}</p>
+  <p>Фамилия - {{(userDataObs | async)?.lastname}}</p>
+  <p *ngFor="let contact of (userDataObs | async)?.userContact"
+  >{{contact.type}} - {{contact.contact}}</p>
+</div>

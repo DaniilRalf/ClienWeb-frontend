@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../../services/http.service";
+import { Component, OnInit } from '@angular/core'
+import { HttpService } from "../../../services/http.service"
+import { UserInterface } from "../../../models/types/user-data.interface"
+import { UserService } from "../../../services/user.service"
+import { take } from "rxjs"
 
 @Component({
   selector: 'app-personal',
@@ -10,6 +13,7 @@ export class PersonalComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -18,9 +22,9 @@ export class PersonalComponent implements OnInit {
 
   private getUserData(): void {
     this.httpService.getUserData()
-      //TODO types
-      .subscribe((userData: any) => {
-        console.log(userData)
+      .pipe(take(1))
+      .subscribe((userData: UserInterface) => {
+        this.userService.setUserData(userData)
       })
   }
 
