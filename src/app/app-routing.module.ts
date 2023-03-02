@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MainComponent} from "./pages/public/main/main.component";
-import {PersonalComponent} from "./pages/personal/personal/personal.component";
+import { MainComponent } from "./pages/public/main/main.component";
+import { PersonalComponent } from "./pages/personal/personal/personal.component";
+import { PersonalMyPageComponent } from "./pages/personal/personal-my-page/personal-my-page.component";
+import { PersonalAddMaterialsComponent } from "./pages/personal/personal-add-materials/personal-add-materials.component";
 
 const routes: Routes = [
 
@@ -20,7 +22,19 @@ const routes: Routes = [
   {
     path: 'personal',
     component: PersonalComponent,
-    children: []
+    children: [
+      {path: '', redirectTo: 'my-page', pathMatch: 'full'},
+      {
+        path: 'my-page',
+        component: PersonalMyPageComponent,
+        children: []
+      },
+      {
+        path: 'add',
+        component: PersonalAddMaterialsComponent,
+        children: [],
+      },
+    ]
   },
 
 ];

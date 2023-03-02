@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {LoginRegistrationInterface} from "../models/types/login-registration.interface";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import { Injectable } from '@angular/core'
+import { LoginRegistrationInterface } from "../models/types/login-registration.interface"
+import { HttpClient } from "@angular/common/http"
+import { environment } from "../../environments/environment"
 
 @Injectable({
   providedIn: 'root'

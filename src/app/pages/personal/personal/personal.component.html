@@ -1,1 +1,26 @@
-<p>personal works!</p>
+<div class="personal container">
+  <mat-drawer-container autosize>
+
+    <mat-drawer #drawer class="personal-menu" mode="side">
+      <div class="personal-menu-item" [routerLink]="['my-page']">
+        <mat-icon class="icon">view_list</mat-icon>Моя страница
+      </div>
+      <div class="personal-menu-item" [routerLink]="'add'">
+        <mat-icon class="icon">chat</mat-icon>Добавить материалы
+      </div>
+    </mat-drawer>
+
+    <div class="personal-content">
+
+      <span class="personal-content-toggle" (click)="drawer.toggle()">
+        <mat-icon class="icon">{{drawer.opened ? 'keyboard_arrow_left' : 'keyboard_arrow_right'}}</mat-icon>
+      </span>
+
+      <div class="personal-content-main">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+  </mat-drawer-container>
+</div>
