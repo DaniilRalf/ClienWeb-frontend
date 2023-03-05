@@ -9,20 +9,28 @@ import {MatIconModule} from "@angular/material/icon";
 import {RouterModule} from "@angular/router";
 import { PersonalMyPageComponent } from './personal-my-page/personal-my-page.component';
 import { PersonalAddMaterialsComponent } from './personal-add-materials/personal-add-materials.component';
+import { PersonalAddBooksComponent } from './personal-add-materials/personal-add-books/personal-add-books.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 const allComponents = [
   PersonalComponent,
+  PersonalMyPageComponent,
+  PersonalAddMaterialsComponent,
+  PersonalAddBooksComponent
 ]
 
 @NgModule({
-  declarations: [...allComponents, PersonalMyPageComponent, PersonalAddMaterialsComponent],
+  declarations: [...allComponents],
   exports: [...allComponents],
   imports: [
     CommonModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

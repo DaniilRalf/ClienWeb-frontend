@@ -6,7 +6,7 @@
   &-menu {
 
     &-item {
-      padding: 10px 20px 10px 0;
+      margin: 20px 20px 20px 0;
       display: flex;
       align-items: center;
 
@@ -16,16 +16,16 @@
       }
     }
   }
+
   &-content {
     position: relative;
     //height: auto;
-    height: 100vh;
 
     &-toggle {
       display: inline-block;
       position: absolute;
       background-color: #3f51b5;
-      border-radius: 50%;
+      border-radius: 0 0 40% 40%;
       padding: 7px 8px;
       height: 40px;
       width: 40px;
@@ -33,6 +33,11 @@
       .icon{
         color: white;
       }
+    }
+
+    &-main {
+      padding: 10px;
+      margin-left: 50px;
     }
   }
 }

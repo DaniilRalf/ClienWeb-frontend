@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { LoginRegistrationInterface } from "../models/types/login-registration.interface"
 import { HttpClient } from "@angular/common/http"
 import { environment } from "../../environments/environment"
+import {AddBooksInterface} from "../models/types/materials.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,12 @@ export class HttpService {
   public getUserData(): any {
     return this.http.get(
       environment.apiBaseUrl + 'api/profile'
+    )
+  }
+
+  public addBook(data: AddBooksInterface): any {
+    return this.http.post(
+      environment.apiBaseUrl + 'api/item/save', data
     )
   }
 

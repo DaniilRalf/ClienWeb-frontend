@@ -1,0 +1,15 @@
+@import "../../../../assets/scss/index.scss";
+
+.add-materials {
+
+  &-item {
+    margin-bottom: 10px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    background-color: $suppl_color;
+
+    h2 {
+      margin: 0;
+    }
+  }
+}

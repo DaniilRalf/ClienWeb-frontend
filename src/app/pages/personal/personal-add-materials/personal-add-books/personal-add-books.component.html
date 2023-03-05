@@ -1,0 +1,25 @@
+<!--TODO: fix interface-->
+
+<div class="add-book">
+  <form class="form"
+        [formGroup]="addBookForm"
+        (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Название книги</mat-label>
+      <input matInput type="text"
+             formControlName="title"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Описание</mat-label>
+      <input matInput type="text"
+             formControlName="description"
+      />
+    </mat-form-field>
+    <input type="file" (change)="setPhoto($event)" multiple>
+    <button [disabled]="addBookForm.status === 'INVALID'"
+            mat-flat-button color="primary" type="submit"
+    >Сохранить</button>
+  </form>
+</div>
