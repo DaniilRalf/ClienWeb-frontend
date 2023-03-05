@@ -16,9 +16,8 @@
       <ng-container *ngFor="let item of ['username', 'password']">
         <mat-form-field appearance="fill">
           <mat-label>Enter your {{item}}</mat-label>
-          <input matInput type="text"
+          <input matInput formControlName="{{item}}"
                  [type]="(showPassword && item === 'password') ? 'password' : 'text'"
-                 formControlName="{{item}}"
           />
           <button *ngIf="item === 'password'"
                   mat-icon-button matSuffix

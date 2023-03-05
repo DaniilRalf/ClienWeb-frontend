@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog } from "@angular/material/dialog"
 import { ModalLoginAuthComponent } from "../modal-login-auth/modal-login-auth.component"
-import {filter, switchMap, take} from "rxjs"
+import {filter, Observable, switchMap, take} from "rxjs"
 import { HttpService } from "../../services/http.service"
-import { LoginRegistrationInterface } from "../../models/types/login-registration.interface"
+import {LoginOrRegistrationInputInterface, LoginRegistrationInterface} from "../../models/types/login-registration.interface"
 import { LocalStorageService } from "../../services/local-storage.service"
 import { Router } from "@angular/router"
+import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-header-custom',
@@ -29,7 +30,9 @@ export class HeaderCustomComponent implements OnInit {
       .open(ModalLoginAuthComponent, {})
       .afterClosed().pipe(
         filter((outputData) => outputData !== undefined),
-        switchMap((outputData: {tag: 'loginForm' | 'registrationForm', data: LoginRegistrationInterface}) => {
+        switchMap((
+          outputData: {tag: 'loginForm' | 'registrationForm', data: LoginRegistrationInterface}
+        ): Observable<LoginOrRegistrationInputInterface> => {
           if (outputData.tag === 'loginForm') {
             return this.httpService.login(outputData.data)
           } else {
@@ -37,11 +40,11 @@ export class HeaderCustomComponent implements OnInit {
           }
         }),
         take(1)
-    ).subscribe((req?: any) => {
-      if (req.result === true) {
-        this.localStorageService.setLocalStorageItem('token', req.token)
-      }
-    })
+    ).subscribe((res) => {
+      this.localStorageService.setLocalStorageItem('token', res.token)
+    }), (err: any) => {
+      //TODO add handler error
+    }
   }
 
   public logout(): void {
