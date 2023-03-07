@@ -51,7 +51,7 @@ export class PersonalAddBooksComponent implements OnInit {
 
 
     let testFormData = new FormData()
-    testFormData.append('image', this.file)
+    testFormData.append('file', this.file)
     testFormData.append('entity', this.addBookForm.value)
 
 
