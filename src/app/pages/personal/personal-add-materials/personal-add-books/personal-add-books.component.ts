@@ -43,7 +43,9 @@ export class PersonalAddBooksComponent implements OnInit {
   }
 
   public onSubmit() {
-    const bookData: AddBooksInterface = {...this.addBookForm.value, image: this.file}
+    //TODO: change type
+    // const bookData: AddBooksInterface = {...this.addBookForm.value, image: this.file}
+    const bookData: any = {image: this.file, entity: this.addBookForm.value}
     this.bookDataEmit.emit(bookData)
   }
 
