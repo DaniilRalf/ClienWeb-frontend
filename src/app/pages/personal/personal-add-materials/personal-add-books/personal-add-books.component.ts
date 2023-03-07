@@ -13,7 +13,8 @@ export class PersonalAddBooksComponent implements OnInit {
 
   private file!: File
 
-  @Output() bookDataEmit = new EventEmitter<AddBooksInterface>();
+  //TODO: typess
+  @Output() bookDataEmit = new EventEmitter<any>();
 
   constructor() { }
 
@@ -42,11 +43,19 @@ export class PersonalAddBooksComponent implements OnInit {
     }
   }
 
+
   public onSubmit() {
     //TODO: change type
-    // const bookData: AddBooksInterface = {...this.addBookForm.value, image: this.file}
-    const bookData: any = {image: this.file, entity: this.addBookForm.value}
-    this.bookDataEmit.emit(bookData)
+    //const bookData: AddBooksInterface = {...this.addBookForm.value, image: this.file}
+    // const bookData: any = {image: this.file, entity: this.addBookForm.value}
+
+
+    let testFormData = new FormData()
+    testFormData.append('file', this.file)
+    testFormData.append('entity', this.addBookForm.value)
+
+
+    this.bookDataEmit.emit(testFormData)
   }
 
 

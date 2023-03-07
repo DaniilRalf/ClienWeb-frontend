@@ -32,7 +32,8 @@ export class HttpService {
     )
   }
 
-  public addBook(data: AddBooksInterface): any {
+  //TODO types
+  public addBook(data: any): any {
     return this.http.post(
       environment.apiBaseUrl + 'api/item/save', data
     )

@@ -16,7 +16,8 @@ export class PersonalAddMaterialsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public bookDataEmit(event: AddBooksInterface) {
+  // TODO: types
+  public bookDataEmit(event: any) {
     console.log(event)
     this.httpService.addBook(event)
       //TODO types
