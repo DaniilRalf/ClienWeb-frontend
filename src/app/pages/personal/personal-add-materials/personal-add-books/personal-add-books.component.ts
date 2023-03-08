@@ -42,7 +42,6 @@ export class PersonalAddBooksComponent implements OnInit {
     }
   }
 
-
   public onSubmit() {
     //TODO: change type
     let testFormData: FormData = new FormData()

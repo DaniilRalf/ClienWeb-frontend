@@ -1,1 +1,21 @@
-<p>books works!</p>
+<div class="books">
+
+  <div class="books-data container">
+    <div class="books-data-item" *ngFor="let book of booksList$ | async">
+      <app-book-item [book]="book"></app-book-item>
+    </div>
+  </div>
+
+<!--  TODO russian translate paginator-->
+  <div class="books-paginator">
+    <mat-paginator showFirstLastButtons
+                   (page)="pageChanged($event)"
+                   aria-label="Select page"
+                   [pageSizeOptions]="[10, 25, 50, 100]"
+                   [pageIndex]="queryParams.page"
+                   [pageSize]="queryParams.size"
+                   [length]="queryParams.totalElements"
+    ></mat-paginator>
+  </div>
+
+</div>
