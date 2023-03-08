@@ -13,6 +13,7 @@
 
     &-logo {
       cursor: pointer;
+      margin: 0;
     }
 
     &-active {
@@ -20,6 +21,7 @@
 
       p {
         cursor: pointer;
+        margin: 0;
       }
       p:first-child {
         margin-right: 20px;

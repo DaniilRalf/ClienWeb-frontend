@@ -24,6 +24,7 @@ export class PersonalAddMaterialsComponent implements OnInit {
         console.log(res)
       }), (err: any) => {
       //TODO add handler error
+
     }
   }
 

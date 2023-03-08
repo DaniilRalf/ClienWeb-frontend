@@ -8,22 +8,26 @@ import {RouterModule} from "@angular/router";
 import { PublicInfoComponent } from './public-info/public-info.component';
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "../../helpers/auth.interceptor";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { BookItemComponent } from './books/book-item/book-item.component';
 
 const allComponents = [
   PublicComponent,
   BooksComponent,
   CoursesComponent,
   PublicInfoComponent,
+  BookItemComponent
 ]
 
 @NgModule({
   declarations: [ ...allComponents ],
   exports: [ ...allComponents ],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        RouterModule,
+        MatPaginatorModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ]
