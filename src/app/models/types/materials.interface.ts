@@ -25,9 +25,11 @@
 /* ? Books interfaces================================*/
   export interface AddBooksInterface {
     description: string,
-    image: File,
     title: string,
-    type_id: number,
+    typeId: number,
+    // TODO types
+    image?: any,
+    authors?: any,
   }
   export interface InputDataBooks {
     content: BooksContent[],
