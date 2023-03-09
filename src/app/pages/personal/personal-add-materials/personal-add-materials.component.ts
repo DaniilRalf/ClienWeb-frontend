@@ -16,16 +16,16 @@ export class PersonalAddMaterialsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public bookDataEmit(event: FormData) {
-    console.log(event)
+  public bookDataEmit(event: AddBooksInterface) {
     this.httpService.addBook(event)
       //TODO types
       .subscribe((res: any) => {
+        //TODO delete
         console.log(res)
       }), (err: any) => {
-      //TODO add handler error
-
-    }
+        //TODO add handler error
+      }
   }
+
 
 }
