@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { LoginRegistrationInterface } from "../models/types/login-registration.interface"
 import { HttpClient } from "@angular/common/http"
 import { environment } from "../../environments/environment"
-import {AddBooksInterface, InputDataBooks, QueryParams} from "../models/types/materials.interface";
+import {AddBooksInterface, BooksContent, InputDataBooks, QueryParams} from "../models/types/materials.interface";
 import {LocalStorageService} from "./local-storage.service";
 import {Observable} from "rxjs";
 
@@ -47,6 +47,11 @@ export class HttpService {
     public getAllBooks(queryParams: any): Observable<InputDataBooks> {
       return this.http.get<InputDataBooks>(
         environment.apiBaseUrl + `api/item${this.generateQueryParams(queryParams)}`
+      )
+    }
+    public getItemBook(id: number): Observable<BooksContent> {
+      return this.http.get<BooksContent>(
+        environment.apiBaseUrl + `api/item/${id}`
       )
     }
   /* ? MATERIALS --------------------------------------------*/
