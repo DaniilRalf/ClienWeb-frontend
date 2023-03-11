@@ -2,7 +2,7 @@
 
   <div class="books-data container">
     <div class="books-data-item" *ngFor="let book of booksList$ | async">
-      <app-book-item [book]="book"></app-book-item>
+      <app-book-item [book]="book" [routerLink]="['/books', book.id]"></app-book-item>
     </div>
   </div>
 

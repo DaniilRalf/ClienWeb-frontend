@@ -1,0 +1,27 @@
+<div class="book-item-page container">
+
+  <div class="book-item-page-img"></div>
+
+  <div class="book-item-page-content">
+    <h1 class="book-item-page-content-title">
+      {{(actualBook$ | async)?.title}}
+    </h1>
+    <p class="book-item-page-content-desc">
+      <span>Описание: </span>{{(actualBook$ | async)?.description}}
+    </p>
+    <p class="book-item-page-content-duration">
+      <span>Продолжительность чтения: </span>{{(actualBook$ | async)?.duration}}<span> ч.</span>
+    </p>
+    <p class="book-item-page-content-rate">
+      <span>Рейтинг: </span>{{(actualBook$ | async)?.rate}}
+    </p>
+    <p class="book-item-page-content-popularity">
+      <span>Популярность: </span>{{(actualBook$ | async)?.popularity}}
+    </p>
+    <p class="book-item-page-content-authors">
+      <span>Авторы: </span>
+      <ng-container *ngFor="let author of (actualBook$ | async)?.authors">{{author.name}}</ng-container>
+    </p>
+  </div>
+
+</div>

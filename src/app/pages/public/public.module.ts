@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthInterceptor} from "../../helpers/auth.interceptor";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { BookItemComponent } from './books/book-item/book-item.component';
+import { BookItemPageComponent } from './books/book-item-page/book-item-page.component';
 
 const allComponents = [
   PublicComponent,
@@ -20,7 +21,7 @@ const allComponents = [
 ]
 
 @NgModule({
-  declarations: [ ...allComponents ],
+  declarations: [ ...allComponents, BookItemPageComponent ],
   exports: [ ...allComponents ],
     imports: [
         CommonModule,
