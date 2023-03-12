@@ -21,12 +21,6 @@ export class AuthInterceptor implements HttpInterceptor {
       request = request.clone({
         headers: request.headers
           .set('Authorization', 'Bearer ' + token)
-          .set('Access-Control-Allow-Origin', '*')
-      })
-    } else {
-      request = request.clone({
-        headers: request.headers
-          .set('Access-Control-Allow-Origin', '*')
       })
     }
 

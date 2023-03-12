@@ -54,6 +54,12 @@ export class HttpService {
         environment.apiBaseUrl + `api/item/${id}`
       )
     }
+    //TODO types
+    public addPhoto(data: FormData): Observable<any> {
+      return this.http.post<any>(
+        environment.apiBaseUrl + 'api/image/file', data
+      )
+    }
   /* ? MATERIALS --------------------------------------------*/
 
 

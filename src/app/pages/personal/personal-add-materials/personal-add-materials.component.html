@@ -4,6 +4,8 @@
   <div class="add-materials-item">
     <h2>Добавить книгу</h2>
     <app-personal-add-books (bookDataEmit)="bookDataEmit($event)"
+                            (bookFile)="bookFileEmit($event)"
+                            [savingBookFile]="savingBookFile"
     ></app-personal-add-books>
   </div>
 
