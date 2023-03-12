@@ -1,5 +1,7 @@
 <div class="book-item">
-  <div class="book-item-img"></div>
+  <div class="book-item-img">
+    <img *ngIf="book.image" src="{{'http://localhost:8085/img/' + book.image.name}}">
+  </div>
   <div class="book-item-txt">
     <div class="name">{{book.title}}</div>
     <div class="rate">{{book.rate}}</div>

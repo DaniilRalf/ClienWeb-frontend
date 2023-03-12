@@ -1,6 +1,9 @@
 <!--TODO: fix interface-->
 
 <div class="add-book">
+  <div class="img">
+    <img *ngIf="savingBookFile" src="{{'http://localhost:8085/img/' + savingBookFile.name}}">
+  </div>
   <form class="form"
         [formGroup]="addBookForm"
         (ngSubmit)="onSubmit()"

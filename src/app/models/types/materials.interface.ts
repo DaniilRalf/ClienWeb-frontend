@@ -27,8 +27,11 @@
     description: string,
     title: string,
     typeId: number,
+    image?: {
+      id: number,
+      name: string
+    },
     // TODO types
-    image?: any,
     authors?: any,
   }
   export interface InputDataBooks {
@@ -51,7 +54,10 @@
     description: string,
     duration: number,
     id: number,
-    image: string,
+    image?: {
+      id: number,
+      name: string
+    },
     popularity: number
     rate: number,
     title: string,

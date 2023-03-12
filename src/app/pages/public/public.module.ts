@@ -29,8 +29,6 @@ const allComponents = [
         RouterModule,
         MatPaginatorModule
     ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-  ]
+  providers: []
 })
 export class PublicModule { }

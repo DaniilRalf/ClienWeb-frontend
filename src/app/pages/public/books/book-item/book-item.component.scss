@@ -13,6 +13,12 @@
     margin-bottom: 15px;
     border-radius: 10px;
     background-color: #3f51b5;
+    overflow: hidden;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
   }
   &-txt {
     display: flex;

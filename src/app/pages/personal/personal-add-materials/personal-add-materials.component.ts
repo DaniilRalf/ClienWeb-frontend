@@ -9,6 +9,8 @@ import {HttpService} from "../../../services/http.service";
 })
 export class PersonalAddMaterialsComponent implements OnInit {
 
+  public savingBookFile?: {id: number, name: string}
+
   constructor(
     private httpService: HttpService,
   ) { }
@@ -16,7 +18,7 @@ export class PersonalAddMaterialsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public bookDataEmit(event: AddBooksInterface) {
+  public bookDataEmit(event: AddBooksInterface): void {
     this.httpService.addBook(event)
       //TODO types
       .subscribe((res: any) => {
@@ -25,6 +27,17 @@ export class PersonalAddMaterialsComponent implements OnInit {
       }), (err: any) => {
         //TODO add handler error
       }
+  }
+
+  public bookFileEmit(event: FormData): void {
+    this.httpService.addPhoto(event)
+      //TODO types
+      .subscribe((item: any) => {
+        //TODO create forEach at element
+        this.savingBookFile = item[0]
+      }), (err: any) => {
+      //TODO add handler error
+    }
   }
 
 
