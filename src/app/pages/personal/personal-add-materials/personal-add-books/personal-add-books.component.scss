@@ -18,8 +18,17 @@
     }
   }
   .form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      width: 250px;
+    }
   }
 }
