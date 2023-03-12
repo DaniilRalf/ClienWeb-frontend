@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BooksContent} from "../../../../models/types/materials.interface";
+import { Component, Input, OnInit } from '@angular/core'
+import { BooksContent } from "../../../../models/types/materials.interface"
+import { environment } from "../../../../../environments/environment"
 
 @Component({
   selector: 'app-book-item',
@@ -8,12 +9,12 @@ import {BooksContent} from "../../../../models/types/materials.interface";
 })
 export class BookItemComponent implements OnInit {
 
+  public env = environment
+
   @Input() public book!: BooksContent
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.book)
-  }
+  ngOnInit(): void { }
 
 }

@@ -2,7 +2,7 @@
 
 <div class="add-book">
   <div class="img">
-    <img *ngIf="savingBookFile" src="{{'http://localhost:8085/img/' + savingBookFile.name}}">
+    <img *ngIf="savingBookFile" src="{{env.apiBaseUrl + 'img/' + savingBookFile.name}}">
   </div>
   <form class="form"
         [formGroup]="addBookForm"
@@ -16,11 +16,11 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Описание</mat-label>
-      <input matInput type="text"
+      <textarea matInput type="text"
              formControlName="description"
-      />
+      ></textarea>
     </mat-form-field>
-    <input type="file" (change)="setPhoto($event)" multiple>
+    <input type="file" multiple (change)="setPhoto($event)">
     <button [disabled]="addBookForm.status === 'INVALID'"
             mat-flat-button color="primary" type="submit"
     >Сохранить</button>

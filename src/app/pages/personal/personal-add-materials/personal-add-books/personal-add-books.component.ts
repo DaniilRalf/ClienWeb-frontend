@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
-import {FormControl, FormGroup, Validators} from "@angular/forms"
-import {AddBooksInterface} from "../../../../models/types/materials.interface"
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { FormControl, FormGroup, Validators } from "@angular/forms"
+import { AddBooksInterface } from "../../../../models/types/materials.interface"
+import { environment } from "../../../../../environments/environment"
 
 @Component({
   selector: 'app-personal-add-books',
@@ -9,6 +10,7 @@ import {AddBooksInterface} from "../../../../models/types/materials.interface"
 })
 export class PersonalAddBooksComponent implements OnInit {
 
+  public env = environment
   public addBookForm!: FormGroup
   private file!: File
 
