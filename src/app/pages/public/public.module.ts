@@ -10,6 +10,7 @@ import {MatPaginatorModule} from "@angular/material/paginator"
 import { BookItemComponent } from './books/book-item/book-item.component'
 import { BookItemPageComponent } from './books/book-item-page/book-item-page.component'
 import { CourseItemComponent } from './cources/course-item/course-item.component'
+import {MatSelectModule} from "@angular/material/select";
 
 const allComponents = [
   PublicComponent,
@@ -24,12 +25,13 @@ const allComponents = [
 @NgModule({
   declarations: [ ...allComponents ],
   exports: [ ...allComponents ],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        RouterModule,
-        MatPaginatorModule
-    ],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    RouterModule,
+    MatPaginatorModule,
+    MatSelectModule
+  ],
   providers: []
 })
 export class PublicModule { }

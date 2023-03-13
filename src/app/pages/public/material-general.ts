@@ -1,4 +1,4 @@
-import { Directive, OnInit } from "@angular/core"
+import {Directive, EventEmitter, OnInit} from "@angular/core"
 import { BehaviorSubject, take } from "rxjs"
 import { BooksCoursesContent, InputDataBooksCourses, QueryParams } from "../../models/types/materials.interface"
 import { HttpService } from "../../services/http.service"
@@ -55,6 +55,11 @@ export class MaterialGeneral implements OnInit {
   public pageChanged(event: PageEvent) {
     this.queryParams.page = event.pageIndex
     this.queryParams.size = event.pageSize
+    this.changeQueryParams()
+    this.getAllCoursesData()
+  }
+
+  public sortChanged(): void {
     this.changeQueryParams()
     this.getAllCoursesData()
   }
