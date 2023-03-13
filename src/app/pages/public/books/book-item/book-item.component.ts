@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { BooksContent } from "../../../../models/types/materials.interface"
+import { BooksCoursesContent } from "../../../../models/types/materials.interface"
 import { environment } from "../../../../../environments/environment"
 
 @Component({
@@ -11,7 +11,7 @@ export class BookItemComponent implements OnInit {
 
   public env = environment
 
-  @Input() public book!: BooksContent
+  @Input() public book!: BooksCoursesContent
 
   constructor() { }
 

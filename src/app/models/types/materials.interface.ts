@@ -22,8 +22,8 @@
 /* ? Filters/Search parameters======================*/
 
 
-/* ? Books interfaces================================*/
-  export interface AddBooksInterface {
+/* ? Books-Courses interfaces=======================*/
+  export interface AddBooksCoursesInterface {
     description: string,
     title: string,
     typeId: number,
@@ -34,8 +34,8 @@
     // TODO types
     authors?: any,
   }
-  export interface InputDataBooks {
-    content: BooksContent[],
+  export interface InputDataBooksCourses {
+    content: BooksCoursesContent[],
     empty: boolean,
     first: boolean,
     last: boolean,
@@ -48,7 +48,7 @@
     pageable: PaginatorInput,
     sort: SortInput,
   }
-  export interface BooksContent {
+  export interface BooksCoursesContent {
     authors: AuthorsContent[],
     createdDate: string,
     description: string,
@@ -63,7 +63,7 @@
     title: string,
     typeId: number,
   }
-/* ? Books interfaces================================*/
+/* ? Books-Courses interfaces========================*/
 
 /* ? Authors interfaces==============================*/
   export interface AddAuthorInterface {}

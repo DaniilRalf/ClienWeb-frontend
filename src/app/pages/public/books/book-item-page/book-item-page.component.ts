@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router} from "@angular/router"
 import {BehaviorSubject} from "rxjs";
-import {BooksContent} from "../../../../models/types/materials.interface";
+import {BooksCoursesContent} from "../../../../models/types/materials.interface";
 import {HttpService} from "../../../../services/http.service";
 
 @Component({
@@ -13,7 +13,7 @@ export class BookItemPageComponent implements OnInit {
 
   private actualBookId!: number
 
-  public actualBook$ = new BehaviorSubject<BooksContent>({} as BooksContent)
+  public actualBook$ = new BehaviorSubject<BooksCoursesContent>({} as BooksCoursesContent)
 
   constructor(
     private router: Router,
@@ -31,7 +31,7 @@ export class BookItemPageComponent implements OnInit {
 
   private getActualBook(): void {
     this.httpService.getItemBook(this.actualBookId)
-      .subscribe((itemBook: BooksContent) => {
+      .subscribe((itemBook: BooksCoursesContent) => {
         //TODO delete
         console.log(itemBook)
         this.actualBook$.next(itemBook)

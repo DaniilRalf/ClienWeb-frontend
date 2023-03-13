@@ -1,1 +1,21 @@
-<p>cources works!</p>
+<div class="courses">
+
+  <div class="courses-data container">
+    <div class="courses-data-item" *ngFor="let courses of coursesList$ | async">
+      <app-book-item [book]="courses" [routerLink]="['/courses', courses.id]"></app-book-item>
+    </div>
+  </div>
+
+  <!--  TODO russian translate paginator-->
+  <div class="books-paginator">
+    <mat-paginator showFirstLastButtons
+                   (page)="pageChanged($event)"
+                   aria-label="Select page"
+                   [pageSizeOptions]="[10, 25, 50, 100]"
+                   [pageIndex]="queryParams.page"
+                   [pageSize]="queryParams.size"
+                   [length]="queryParams.totalElements"
+    ></mat-paginator>
+  </div>
+
+</div>

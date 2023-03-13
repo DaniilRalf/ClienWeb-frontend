@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AddBooksInterface} from "../../../models/types/materials.interface";
+import {AddBooksCoursesInterface} from "../../../models/types/materials.interface";
 import {HttpService} from "../../../services/http.service";
 
 @Component({
@@ -18,7 +18,7 @@ export class PersonalAddMaterialsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public bookDataEmit(event: AddBooksInterface): void {
+  public bookDataEmit(event: AddBooksCoursesInterface): void {
     this.httpService.addBook(event)
       //TODO types
       .subscribe((res: any) => {
