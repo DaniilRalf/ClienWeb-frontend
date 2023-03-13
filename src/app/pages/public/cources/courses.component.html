@@ -1,7 +1,7 @@
 <div class="courses">
 
   <div class="courses-data container">
-    <div class="courses-data-item" *ngFor="let courses of coursesList$ | async">
+    <div class="courses-data-item" *ngFor="let courses of dataList$ | async">
       <app-book-item [book]="courses" [routerLink]="['/courses', courses.id]"></app-book-item>
     </div>
   </div>
