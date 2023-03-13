@@ -1,9 +1,25 @@
 <div class="books">
 
-  <div class="books-data container">
-    <div class="books-data-item" *ngFor="let book of booksList$ | async">
-      <app-book-item [book]="book" [routerLink]="['/books', book.id]"></app-book-item>
+  <div class="books-body container">
+
+    <div class="books-body-filter">
+      <h1>Книги</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="queryParams.sort" (selectionChange)="sortChanged()">
+          <mat-option value="title">Название</mat-option>
+          <mat-option value="rate">Рейтинг</mat-option>
+          <mat-option value="popularity">Популярность</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+
+    <div class="books-body-content">
+      <div class="books-body-content-item" *ngFor="let book of dataList$ | async">
+        <app-book-item [book]="book" [routerLink]="['/books', book.id]"></app-book-item>
+      </div>
+    </div>
+
   </div>
 
 <!--  TODO russian translate paginator-->

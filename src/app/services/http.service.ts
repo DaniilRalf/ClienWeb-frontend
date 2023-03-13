@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core'
 import { LoginRegistrationInterface } from "../models/types/login-registration.interface"
 import { HttpClient } from "@angular/common/http"
 import { environment } from "../../environments/environment"
-import {AddBooksInterface, BooksContent, InputDataBooks, QueryParams} from "../models/types/materials.interface";
-import {LocalStorageService} from "./local-storage.service";
-import {Observable} from "rxjs";
+import { BooksCoursesContent, InputDataBooksCourses, QueryParams } from "../models/types/materials.interface"
+import { LocalStorageService } from "./local-storage.service"
+import { Observable } from "rxjs"
 
 @Injectable({
   providedIn: 'root'
@@ -44,19 +44,18 @@ export class HttpService {
         environment.apiBaseUrl + 'api/item/save', data
       )
     }
-    public getAllBooks(queryParams: any): Observable<InputDataBooks> {
-      return this.http.get<InputDataBooks>(
+    public getAllBooksCourses(queryParams: any): Observable<InputDataBooksCourses> {
+      return this.http.get<InputDataBooksCourses>(
         environment.apiBaseUrl + `api/item${this.generateQueryParams(queryParams)}`
       )
     }
-    public getItemBook(id: number): Observable<BooksContent> {
-      return this.http.get<BooksContent>(
+    public getItemBook(id: number): Observable<BooksCoursesContent> {
+      return this.http.get<BooksCoursesContent>(
         environment.apiBaseUrl + `api/item/${id}`
       )
     }
-    //TODO types
-    public addPhoto(data: FormData): Observable<any> {
-      return this.http.post<any>(
+    public addPhoto(data: FormData): Observable<{ id: number, name: string }> {
+      return this.http.post<{ id: number, name: string }>(
         environment.apiBaseUrl + 'api/image/file', data
       )
     }

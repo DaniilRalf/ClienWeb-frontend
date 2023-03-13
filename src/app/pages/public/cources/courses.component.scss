@@ -1,0 +1,21 @@
+@import "../../../../assets/scss/index.scss";
+
+.courses {
+
+  &-body {
+    height: calc(100vh - 120px);
+    overflow-y: scroll;
+
+    &-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 260px);
+      grid-gap: 2rem;
+      justify-content: space-between;
+
+      &-item {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+}

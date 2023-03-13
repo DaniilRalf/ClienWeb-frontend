@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormControl, FormGroup, Validators } from "@angular/forms"
-import { AddBooksInterface } from "../../../../models/types/materials.interface"
+import { AddBooksCoursesInterface } from "../../../../models/types/materials.interface"
 import { environment } from "../../../../../environments/environment"
 
 @Component({
@@ -15,7 +15,7 @@ export class PersonalAddBooksComponent implements OnInit {
   private file!: File
 
   @Input() savingBookFile?: {id: number, name: string}
-  @Output() bookDataEmit = new EventEmitter<AddBooksInterface>();
+  @Output() bookDataEmit = new EventEmitter<AddBooksCoursesInterface>();
   @Output() bookFile = new EventEmitter<FormData>();
 
   constructor() { }
@@ -43,7 +43,6 @@ export class PersonalAddBooksComponent implements OnInit {
     if (input.files && input.files.length > 0) {
       this.file = input.files[0]
     }
-    //TODO вот тут сделат запрос на сохранение фото, после чего необходимо сделать запрос на сохранение книги с фоткой
 
     let newPhotoFormData = new FormData()
     newPhotoFormData.append('file', this.file)
@@ -51,7 +50,7 @@ export class PersonalAddBooksComponent implements OnInit {
   }
 
   public onSubmit() {
-    let newBook: AddBooksInterface = {
+    let newBook: AddBooksCoursesInterface = {
       description: this.addBookForm.value.description,
       title: this.addBookForm.value.title,
       typeId: this.addBookForm.value.type_id,

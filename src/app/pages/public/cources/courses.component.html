@@ -1,1 +1,37 @@
-<p>cources works!</p>
+<div class="courses">
+
+  <div class="courses-body container">
+
+    <div class="books-body-filter">
+      <h1>Курсы</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="queryParams.sort" (selectionChange)="sortChanged()">
+          <mat-option value="title">Название</mat-option>
+          <mat-option value="rate">Рейтинг</mat-option>
+          <mat-option value="popularity">Популярность</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="courses-body-content">
+      <div class="courses-body-content-item" *ngFor="let courses of dataList$ | async">
+        <app-book-item [book]="courses" [routerLink]="['/courses', courses.id]"></app-book-item>
+      </div>
+    </div>
+
+  </div>
+
+  <!--  TODO russian translate paginator-->
+  <div class="books-paginator">
+    <mat-paginator showFirstLastButtons
+                   (page)="pageChanged($event)"
+                   aria-label="Select page"
+                   [pageSizeOptions]="[10, 25, 50, 100]"
+                   [pageIndex]="queryParams.page"
+                   [pageSize]="queryParams.size"
+                   [length]="queryParams.totalElements"
+    ></mat-paginator>
+  </div>
+
+</div>

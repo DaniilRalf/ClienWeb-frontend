@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core'
+import { MaterialGeneral } from "../material-general"
+import { MaterialEnum } from "../../../models/enum/material.enum"
+import {HttpService} from "../../../services/http.service";
+import {LocalStorageService} from "../../../services/local-storage.service";
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit {
 
-  constructor() { }
+export class CoursesComponent extends MaterialGeneral{
 
-  ngOnInit(): void {
+  protected override queryParamKey = 'queryParamCourses'
+  protected override itemType = MaterialEnum.courses
+
+  constructor(
+    protected override httpService: HttpService,
+    protected override localStorageService: LocalStorageService) {
+    super(httpService, localStorageService)
   }
 
 }
