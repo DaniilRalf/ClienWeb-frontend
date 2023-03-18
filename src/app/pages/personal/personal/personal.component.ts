@@ -21,7 +21,8 @@ export class PersonalComponent implements OnInit {
   }
 
   private getUserData(): void {
-    this.httpService.getUserData()
+    //TODO добавь id юзера
+    this.httpService.getUserData(1)
       .pipe(take(1))
       .subscribe((userData: UserInterface) => {
         this.userService.setUserData(userData)

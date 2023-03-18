@@ -20,19 +20,19 @@ export class HttpService {
     //TODO types
     public login(data: LoginRegistrationInterface): any {
       return this.http.post(
-        environment.apiBaseUrl + 'api/auth/login', data
+        environment.apiBaseUrl + 'api/user/login', data
       )
     }
     //TODO types
     public registration(data: LoginRegistrationInterface): any {
       return this.http.post(
-        environment.apiBaseUrl + 'api/registration', data
+        environment.apiBaseUrl + 'api/user/registration', data
       )
     }
     //TODO types
-    public getUserData(): any {
+    public getUserData(id: number): any {
       return this.http.get(
-        environment.apiBaseUrl + 'api/profile'
+        environment.apiBaseUrl + `api/user/profile/${id}`
       )
     }
   /* ? USER -------------------------------------------------*/
