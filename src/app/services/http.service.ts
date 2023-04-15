@@ -49,7 +49,7 @@ export class HttpService {
         environment.apiBaseUrl + `api/item${this.generateQueryParams(queryParams)}`
       )
     }
-    public getItemBook(id: number): Observable<BooksCoursesContent> {
+    public getItemBookCourse(id: number): Observable<BooksCoursesContent> {
       return this.http.get<BooksCoursesContent>(
         environment.apiBaseUrl + `api/item/${id}`
       )

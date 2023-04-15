@@ -1,0 +1,27 @@
+<div class="course-item-page container">
+
+  <div class="course-item-page-img"></div>
+
+  <div class="course-item-page-content">
+    <h1 class="course-item-page-content-title">
+      {{(actualCourse$ | async)?.title}}
+    </h1>
+    <p class="course-item-page-content-desc">
+      <span>Описание: </span>{{(actualCourse$ | async)?.description}}
+    </p>
+    <p class="course-item-page-content-duration">
+      <span>Продолжительность чтения: </span>{{(actualCourse$ | async)?.duration}}<span> ч.</span>
+    </p>
+    <p class="course-item-page-content-rate">
+      <span>Рейтинг: </span>{{(actualCourse$ | async)?.rate}}
+    </p>
+    <p class="course-item-page-content-popularity">
+      <span>Популярность: </span>{{(actualCourse$ | async)?.popularity}}
+    </p>
+    <p class="course-item-page-content-authors">
+      <span>Авторы: </span>
+      <ng-container *ngFor="let author of (actualCourse$ | async)?.authors">{{author.name}}</ng-container>
+    </p>
+  </div>
+
+</div>
