@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core'
-import { Router} from "@angular/router"
-import {BehaviorSubject} from "rxjs";
-import {BooksCoursesContent} from "../../../../models/types/materials.interface";
-import {HttpService} from "../../../../services/http.service";
+import {Component, OnInit} from '@angular/core'
+import {Router} from "@angular/router"
+import {BehaviorSubject} from "rxjs"
+import {BooksCoursesContent} from "../../../../models/types/materials.interface"
+import {HttpService} from "../../../../services/http.service"
 
 @Component({
   selector: 'app-book-item-page',
@@ -18,7 +18,8 @@ export class BookItemPageComponent implements OnInit {
   constructor(
     private router: Router,
     private httpService: HttpService,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getActualBookId()
@@ -30,10 +31,8 @@ export class BookItemPageComponent implements OnInit {
   }
 
   private getActualBook(): void {
-    this.httpService.getItemBook(this.actualBookId)
+    this.httpService.getItemBookCourse(this.actualBookId)
       .subscribe((itemBook: BooksCoursesContent) => {
-        //TODO delete
-        console.log(itemBook)
         this.actualBook$.next(itemBook)
       })
   }

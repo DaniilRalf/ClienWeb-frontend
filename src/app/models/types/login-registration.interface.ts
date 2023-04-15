@@ -1,3 +1,5 @@
+import {RoleEnum} from "../enum/role.enum"
+
 export interface LoginRegistrationInterface {
   password: string,
   username: string,
@@ -8,6 +10,6 @@ export interface LoginRegistrationInterface {
 
 export interface LoginOrRegistrationInputInterface {
   message: string | null,
-  role: ['ROLE_ADMIN'] | ['ROLE_USER'] | ['ROLE_MODERATOR'] | ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_MODERATOR'],
+  role: RoleEnum[],
   token: string,
 }

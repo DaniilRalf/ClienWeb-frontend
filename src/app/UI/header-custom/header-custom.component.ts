@@ -41,19 +41,19 @@ export class HeaderCustomComponent implements OnInit {
         }),
         take(1)
     ).subscribe((res) => {
-      this.localStorageService.setLocalStorageItem('token', res.token)
+      this.localStorageService.setLocalStorageItem('user', res)
     }), (err: any) => {
       //TODO add handler error
     }
   }
 
   public logout(): void {
-    this.localStorageService.removeLocalStorageItem('token')
+    this.localStorageService.removeLocalStorageItem('user')
     this.publicNavigate()
   }
 
   public checkTokenForHeader(): boolean {
-    return !!this.localStorageService.getLocalStorageItem('token')
+    return !!this.localStorageService.getLocalStorageItem('user')
   }
 
   public personalNavigate(): void {

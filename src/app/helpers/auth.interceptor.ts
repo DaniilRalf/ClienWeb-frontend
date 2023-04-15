@@ -16,7 +16,11 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.localStorageService.getLocalStorageItem('token')?.split('"').join('');
+    let token: string = ''
+    const userOfLocalStorage = this.localStorageService.getLocalStorageItem('user')
+    if (userOfLocalStorage) {
+      token = JSON.parse(userOfLocalStorage).token.split('"').join('');
+    }
     if (token) {
       request = request.clone({
         headers: request.headers
