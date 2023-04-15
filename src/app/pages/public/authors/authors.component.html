@@ -1,30 +1,28 @@
-<div class="courses">
+<div class="authors">
 
-  <div class="courses-body container">
+  <div class="authors-body container">
 
-    <div class="books-body-filter">
-      <h1>Курсы</h1>
+    <div class="authors-body-filter">
+      <h1>Авторы</h1>
       <mat-form-field appearance="fill">
         <mat-label>Select an option</mat-label>
         <mat-select [(value)]="queryParams.sort" (selectionChange)="sortChanged()">
-          <mat-option value="title">Название</mat-option>
-          <mat-option value="rate">Рейтинг</mat-option>
-          <mat-option value="popularity">Популярность</mat-option>
+          <mat-option value="name">Название</mat-option>
+          <mat-option value="description">Описание</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
 
-    <div class="courses-body-content">
-      <div class="courses-body-content-item" *ngFor="let courses of dataList$ | async">
-<!--        // TODO create course-item-->
-        <app-book-item [book]="courses" [routerLink]="['/courses', courses.id]"></app-book-item>
+    <div class="authors-body-content">
+      <div class="authors-body-content-item" *ngFor="let author of dataList$ | async">
+        <app-author-item [author]="author" [routerLink]="['/authors', author.id]"></app-author-item>
       </div>
     </div>
 
   </div>
 
   <!--  TODO russian translate paginator-->
-  <div class="books-paginator">
+  <div class="authors-paginator">
     <mat-paginator showFirstLastButtons
                    (page)="pageChanged($event)"
                    aria-label="Select page"

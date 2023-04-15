@@ -1,49 +1,55 @@
-import {Directive, EventEmitter, OnInit} from "@angular/core"
-import { BehaviorSubject, take } from "rxjs"
-import { BooksCoursesContent, InputDataBooksCourses, QueryParams } from "../../models/types/materials.interface"
-import { HttpService } from "../../services/http.service"
-import { LocalStorageService } from "../../services/local-storage.service"
-import { PageEvent } from "@angular/material/paginator"
+import {Component, OnInit} from '@angular/core'
+import {BooksCoursesContent, InputDataBooksCourses, QueryParams} from "../../../models/types/materials.interface"
+import {HttpService} from "../../../services/http.service"
+import {LocalStorageService} from "../../../services/local-storage.service"
+import {BehaviorSubject, take} from "rxjs"
+import {PageEvent} from "@angular/material/paginator"
 
-@Directive()
-export class MaterialGeneral implements OnInit {
+@Component({
+  selector: 'app-authors',
+  templateUrl: './authors.component.html',
+  styleUrls: ['./authors.component.scss']
+})
+export class AuthorsComponent implements OnInit {
 
-  public dataList$ = new BehaviorSubject<BooksCoursesContent[]>([])
-  protected queryParamKey!: string
-  protected itemType!: number
+  public dataList$ = new BehaviorSubject<any[]>([])
+
+  private queryParamKey = 'authors'
 
   public queryParams: QueryParams = {
     page: 0,
     size: 10,
     reverse: true,
-    sort: 'title',
+    sort: 'name',
     totalPages: 0,
     totalElements: 0
   }
 
   constructor(
-    protected httpService: HttpService,
-    protected localStorageService: LocalStorageService
-  ) { }
+    private httpService: HttpService,
+    private localStorageService: LocalStorageService
+  ) {
+  }
 
   ngOnInit(): void {
     this.localStorageService.getLocalStorageItem(this.queryParamKey)
       ? this.queryParams = JSON.parse(this.localStorageService.getLocalStorageItem(this.queryParamKey) || '')
       : this.changeQueryParams()
-    this.getAllCoursesData()
+    this.getAllAuthors()
   }
 
-  private getAllCoursesData(): void {
-    this.httpService.getAllBooksCourses(
+  private getAllAuthors(): void {
+    this.httpService.getAllAuthors(
       {
-        itemType: this.itemType,
         page: this.queryParams.page,
         size: this.queryParams.size,
         reverse: this.queryParams.reverse,
         sort: this.queryParams.sort,
       }
     ).pipe(take(1))
-      .subscribe((item: InputDataBooksCourses) => {
+      // TODO types
+      .subscribe((item: any) => {
+        console.log(item)
         this.queryParams.totalPages = item.totalPages
         this.queryParams.totalElements = item.totalElements
         this.dataList$.next(item.content)
@@ -56,12 +62,12 @@ export class MaterialGeneral implements OnInit {
     this.queryParams.page = event.pageIndex
     this.queryParams.size = event.pageSize
     this.changeQueryParams()
-    this.getAllCoursesData()
+    this.getAllAuthors()
   }
 
   public sortChanged(): void {
     this.changeQueryParams()
-    this.getAllCoursesData()
+    this.getAllAuthors()
   }
 
   private changeQueryParams(): void {

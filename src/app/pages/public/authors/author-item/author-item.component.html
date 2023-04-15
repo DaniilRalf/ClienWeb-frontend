@@ -1,0 +1,8 @@
+<div class="author-item">
+  <div class="author-item-img">
+    <img *ngIf="author.image" src="{{env.apiBaseUrl + 'img/' + author.image.name}}">
+  </div>
+  <div class="author-item-txt">
+    <div class="name">{{author.name}}</div>
+  </div>
+</div>

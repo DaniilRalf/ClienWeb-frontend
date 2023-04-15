@@ -1,0 +1,14 @@
+<div class="author-item-page container">
+
+  <div class="author-item-page-img"></div>
+
+  <div class="author-item-page-content">
+    <h1 class="author-item-page-content-desc">
+      {{(actualAuthor$ | async)?.name}}
+    </h1>
+    <p class="author-item-page-content-duration">
+      <span>Описание: </span>{{(actualAuthor$ | async)?.description}}<span> ч.</span>
+    </p>
+  </div>
+
+</div>

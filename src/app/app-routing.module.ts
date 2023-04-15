@@ -6,10 +6,12 @@ import {PersonalMyPageComponent} from "./pages/personal/personal-my-page/persona
 import {PersonalAddMaterialsComponent} from "./pages/personal/personal-add-materials/personal-add-materials.component"
 import {BooksComponent} from "./pages/public/books/books.component"
 import {CoursesComponent} from "./pages/public/cources/courses.component"
-import {PublicInfoComponent} from "./pages/public/public-info/public-info.component"
+import {InfoComponent} from "./pages/public/info/info.component"
 import {BookItemPageComponent} from "./pages/public/books/book-item-page/book-item-page.component"
 import {AuthorizationGuard} from "./helpers/authorization.guard"
 import {CourseItemPageComponent} from "./pages/public/cources/course-item-page/course-item-page.component"
+import {AuthorsComponent} from "./pages/public/authors/authors.component";
+import {AuthorItemPageComponent} from "./pages/public/authors/author-item-page/author-item-page.component";
 
 const routes: Routes = [
 
@@ -18,31 +20,13 @@ const routes: Routes = [
     component: PublicComponent,
     children: [
       {path: '', redirectTo: 'main', pathMatch: 'full'},
-      {
-        path: 'main',
-        component: PublicInfoComponent,
-        children: []
-      },
-      {
-        path: 'books',
-        component: BooksComponent,
-        children: []
-      },
-      {
-        path: 'books/:id',
-        component: BookItemPageComponent,
-        children: []
-      },
-      {
-        path: 'courses',
-        component: CoursesComponent,
-        children: []
-      },
-      {
-        path: 'courses/:id',
-        component: CourseItemPageComponent,
-        children: []
-      },
+      {path: 'main', component: InfoComponent, children: []},
+      {path: 'books', component: BooksComponent, children: []},
+      {path: 'books/:id', component: BookItemPageComponent, children: []},
+      {path: 'courses', component: CoursesComponent, children: []},
+      {path: 'courses/:id', component: CourseItemPageComponent, children: []},
+      {path: 'authors', component: AuthorsComponent, children: []},
+      {path: 'authors/:id', component: AuthorItemPageComponent, children: []},
     ]
   },
 
@@ -52,16 +36,8 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard],
     children: [
       {path: '', redirectTo: 'my-page', pathMatch: 'full'},
-      {
-        path: 'my-page',
-        component: PersonalMyPageComponent,
-        children: []
-      },
-      {
-        path: 'add',
-        component: PersonalAddMaterialsComponent,
-        children: [],
-      },
+      {path: 'my-page', component: PersonalMyPageComponent, children: []},
+      {path: 'add', component: PersonalAddMaterialsComponent, children: [],},
     ]
   },
 
