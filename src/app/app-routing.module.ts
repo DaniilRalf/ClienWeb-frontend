@@ -8,6 +8,7 @@ import { BooksComponent } from "./pages/public/books/books.component"
 import { CoursesComponent } from "./pages/public/cources/courses.component"
 import { PublicInfoComponent } from "./pages/public/public-info/public-info.component"
 import { BookItemPageComponent } from "./pages/public/books/book-item-page/book-item-page.component"
+import {AuthorizationGuard} from "./helpers/authorization.guard";
 
 const routes: Routes = [
 
@@ -42,6 +43,7 @@ const routes: Routes = [
   {
     path: 'personal',
     component: PersonalComponent,
+    canActivate: [AuthorizationGuard],
     children: [
       {path: '', redirectTo: 'my-page', pathMatch: 'full'},
       {

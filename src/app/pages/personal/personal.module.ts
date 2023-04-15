@@ -12,6 +12,7 @@ import { PersonalAddMaterialsComponent } from './personal-add-materials/personal
 import { PersonalAddBooksComponent } from './personal-add-materials/personal-add-books/personal-add-books.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {AuthorizationGuard} from "../../helpers/authorization.guard";
 
 const allComponents = [
   PersonalComponent,
@@ -33,7 +34,8 @@ const allComponents = [
     MatInputModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    AuthorizationGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ]
 })
 export class PersonalModule { }
