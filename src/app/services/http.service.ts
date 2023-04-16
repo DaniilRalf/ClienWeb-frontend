@@ -45,9 +45,16 @@ export class HttpService {
   /* ? MATERIALS --------------------------------------------*/
 
   //TODO types
-  public addBook(data: any): any {
+  public addBookOrCourse(data: any): any {
     return this.http.post(
       environment.apiBaseUrl + 'api/item/save', data
+    )
+  }
+
+  //TODO types
+  public addAuthor(data: any): any {
+    return this.http.post(
+      environment.apiBaseUrl + 'api/author/save', data
     )
   }
 

@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core'
 import { FormControl, FormGroup, Validators } from "@angular/forms"
 import { AddBooksCoursesInterface } from "../../../../models/types/materials.interface"
 import { environment } from "../../../../../environments/environment"
+import {Element} from "@angular/compiler";
+import {MaterialEnum} from "../../../../models/enum/material.enum";
 
 @Component({
   selector: 'app-personal-add-books',
@@ -16,7 +18,7 @@ export class PersonalAddBooksComponent implements OnInit {
 
   @Input() savingBookFile?: {id: number, name: string}
   @Output() bookDataEmit = new EventEmitter<AddBooksCoursesInterface>();
-  @Output() bookFile = new EventEmitter<FormData>();
+  @Output() bookFile = new EventEmitter<{ event: FormData, tag: MaterialEnum }>();
 
   constructor() { }
 
@@ -34,7 +36,7 @@ export class PersonalAddBooksComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
       ]),
-      type_id: new FormControl(1),
+      type_id: new FormControl(MaterialEnum.books),
     })
   }
 
@@ -46,7 +48,7 @@ export class PersonalAddBooksComponent implements OnInit {
 
     let newPhotoFormData = new FormData()
     newPhotoFormData.append('file', this.file)
-    this.bookFile.emit(newPhotoFormData)
+    this.bookFile.emit({event: newPhotoFormData, tag: MaterialEnum.books})
   }
 
   public onSubmit() {

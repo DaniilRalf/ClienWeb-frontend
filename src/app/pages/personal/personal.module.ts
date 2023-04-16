@@ -13,6 +13,8 @@ import { PersonalAddBooksComponent } from './personal-add-materials/personal-add
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {AuthorizationGuard} from "../../helpers/authorization.guard";
+import { PersonalAddCoursesComponent } from './personal-add-materials/personal-add-courses/personal-add-courses.component';
+import { PersonalAddAuthorsComponent } from './personal-add-materials/personal-add-authors/personal-add-authors.component';
 
 const allComponents = [
   PersonalComponent,
@@ -22,7 +24,7 @@ const allComponents = [
 ]
 
 @NgModule({
-  declarations: [...allComponents],
+  declarations: [...allComponents, PersonalAddCoursesComponent, PersonalAddAuthorsComponent],
   exports: [...allComponents],
   imports: [
     CommonModule,

@@ -1,25 +1,26 @@
-<div class="add-book">
+<div class="add-course">
   <div class="img" (click)="inputFile.click()">
-    <mat-icon class="img-mat-icon" *ngIf="!savingBookFile">add_a_photo</mat-icon>
-    <img *ngIf="savingBookFile" src="{{env.apiBaseUrl + 'img/' + savingBookFile.name}}">
+    <mat-icon class="img-mat-icon" *ngIf="!savingCourseFile">add_a_photo</mat-icon>
+    <img *ngIf="savingCourseFile" src="{{env.apiBaseUrl + 'img/' + savingCourseFile.name}}">
   </div>
   <form class="form"
-        [formGroup]="addBookForm"
+        [formGroup]="addCourseForm"
         (ngSubmit)="onSubmit()"
   >
     <mat-form-field appearance="fill">
-      <mat-label>Название книги</mat-label>
+      <mat-label>Название курса</mat-label>
       <input matInput type="text" formControlName="title" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Описание</mat-label>
       <textarea matInput type="text"
-             formControlName="description"
+                formControlName="description"
       ></textarea>
     </mat-form-field>
     <input #inputFile style="display: none" type="file" multiple (change)="setPhoto($event)">
-    <button [disabled]="addBookForm.status === 'INVALID'"
+    <button [disabled]="addCourseForm.status === 'INVALID'"
             mat-flat-button color="primary" type="submit"
     >Сохранить</button>
   </form>
 </div>
+

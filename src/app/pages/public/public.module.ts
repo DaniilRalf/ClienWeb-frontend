@@ -15,6 +15,7 @@ import {CourseItemPageComponent} from './cources/course-item-page/course-item-pa
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorItemComponent } from './authors/author-item/author-item.component';
 import { AuthorItemPageComponent } from './authors/author-item-page/author-item-page.component'
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const allComponents = [
   PublicComponent,
@@ -31,13 +32,14 @@ const allComponents = [
 @NgModule({
   declarations: [...allComponents, AuthorItemComponent, AuthorItemPageComponent],
   exports: [...allComponents],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    RouterModule,
-    MatPaginatorModule,
-    MatSelectModule
-  ],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        RouterModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        MatTooltipModule
+    ],
   providers: []
 })
 export class PublicModule {

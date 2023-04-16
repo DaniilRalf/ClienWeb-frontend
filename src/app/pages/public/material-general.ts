@@ -64,6 +64,19 @@ export class MaterialGeneral implements OnInit {
     this.getAllCoursesData()
   }
 
+  public refreshQueryParams(): void {
+    this.queryParams = {
+      page: 0,
+      size: 10,
+      reverse: true,
+      sort: 'title',
+      totalPages: 0,
+      totalElements: 0
+    }
+    this.changeQueryParams()
+    this.getAllCoursesData()
+  }
+
   private changeQueryParams(): void {
     this.httpService.saveInLSQueryParam(this.queryParamKey, this.queryParams)
   }

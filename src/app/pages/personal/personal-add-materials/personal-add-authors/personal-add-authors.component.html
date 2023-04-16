@@ -1,0 +1,25 @@
+<div class="add-author">
+  <div class="img" (click)="inputFile.click()">
+    <mat-icon class="img-mat-icon" *ngIf="!savingAuthorFile">add_a_photo</mat-icon>
+    <img *ngIf="savingAuthorFile" src="{{env.apiBaseUrl + 'img/' + savingAuthorFile.name}}">
+  </div>
+  <form class="form"
+        [formGroup]="addAuthorForm"
+        (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Имя автора</mat-label>
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Описание автора</mat-label>
+      <textarea matInput type="text"
+                formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <input #inputFile style="display: none" type="file" multiple (change)="setPhoto($event)">
+    <button [disabled]="addAuthorForm.status === 'INVALID'"
+            mat-flat-button color="primary" type="submit"
+    >Сохранить</button>
+  </form>
+</div>

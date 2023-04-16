@@ -12,6 +12,13 @@
           <mat-option value="popularity">Популярность</mat-option>
         </mat-select>
       </mat-form-field>
+      <span class="books-body-filter" (click)="refreshQueryParams()">
+        <mat-icon
+          matTooltip="Info about the action"
+          [matTooltipPosition]="'above'"
+          class="icon">refresh
+        </mat-icon>
+      </span>
     </div>
 
     <div class="books-body-content">

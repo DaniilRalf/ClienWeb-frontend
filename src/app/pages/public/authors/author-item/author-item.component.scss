@@ -14,8 +14,8 @@
     overflow: hidden;
 
     img {
-      height: auto;
-      width: 100%;
+      min-height: 100%;
+      max-width: 100%;
     }
   }
   &-txt {
