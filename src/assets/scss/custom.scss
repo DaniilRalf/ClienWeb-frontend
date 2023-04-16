@@ -1,6 +1,6 @@
 //COLOR=========================
   $main_color: #3f51b5;
-  $suppl_color: rgba(63, 81, 181, 0.13);
+  $suppl_color: rgba(63, 81, 181, 0.06);
   $white_color: #ffffff;
   $grey_light_color: #e1e1e1;
 //COLOR=========================
@@ -9,4 +9,8 @@
   //max-width: 1400px;
   //margin: auto;
   padding: 20px;
+}
+
+h1, h2, h3 {
+  margin: 0;
 }

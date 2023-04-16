@@ -1,31 +1,43 @@
 <div class="add-materials">
 
+  <mat-accordion>
 
-  <div class="add-materials-item">
-    <h2>Добавить книгу</h2>
-    <app-personal-add-books (bookDataEmit)="bookOrCourseEmit($event)"
-                            (bookFile)="fileEmit($event)"
-                            [savingBookFile]="savingBookFile"
-    ></app-personal-add-books>
-  </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title><h3>Добавить книгу</h3></mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="add-materials-item">
+        <app-personal-add-books (bookDataEmit)="bookOrCourseEmit($event)"
+                                (bookFile)="fileEmit($event)"
+                                [savingBookFile]="savingBookFile"
+        ></app-personal-add-books>
+      </div>
+    </mat-expansion-panel>
 
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title><h3>Добавить курс</h3></mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="add-materials-item">
+        <app-personal-add-courses (courseDataEmit)="bookOrCourseEmit($event)"
+                                  (courseFile)="fileEmit($event)"
+                                  [savingCourseFile]="savingCourseFile"
+        ></app-personal-add-courses>
+      </div>
+    </mat-expansion-panel>
 
-  <div class="add-materials-item">
-    <h2>Добавить курс</h2>
-    <app-personal-add-courses (courseDataEmit)="bookOrCourseEmit($event)"
-                              (courseFile)="fileEmit($event)"
-                              [savingCourseFile]="savingCourseFile"
-    ></app-personal-add-courses>
-  </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title><h3>Добавить автора</h3></mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="add-materials-item">
+        <app-personal-add-authors (authorDataEmit)="authorEmit($event)"
+                                  (authorFile)="fileEmit($event)"
+                                  [savingAuthorFile]="savingAuthorFile"
+        ></app-personal-add-authors>
+      </div>
+    </mat-expansion-panel>
 
-
-  <div class="add-materials-item">
-    <h2>Добавить автора</h2>
-    <app-personal-add-authors (authorDataEmit)="authorEmit($event)"
-                              (authorFile)="fileEmit($event)"
-                              [savingAuthorFile]="savingAuthorFile"
-    ></app-personal-add-authors>
-  </div>
-
+  </mat-accordion>
 
 </div>

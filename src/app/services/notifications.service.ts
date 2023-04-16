@@ -4,7 +4,7 @@ import {MatSnackBar} from "@angular/material/snack-bar"
 @Injectable({
   providedIn: 'root'
 })
-export class ErrorHandlerService {
+export class NotificationsService {
 
   constructor(
     private _snackBar: MatSnackBar
@@ -12,9 +12,16 @@ export class ErrorHandlerService {
   }
 
   /** Error notification*/
-  public openSnackBar(message: string, action: string): void {
+  public openErrorNotification(message: string, action: string): void {
     this._snackBar.open(message, action, {
       duration: 3000,
     });
+  }
+
+  /** Event notification*/
+  public openEventNotification(message: string): void {
+    this._snackBar.open(message, '', {
+      duration: 3000,
+    })
   }
 }

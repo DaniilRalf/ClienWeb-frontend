@@ -17,6 +17,8 @@ export class HttpService {
   ) {
   }
 
+  // TODO add for all request catchError
+
   /* ? USER -------------------------------------------------*/
 
   //TODO types

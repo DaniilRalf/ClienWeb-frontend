@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
 import {environment} from "../../../../../environments/environment"
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {MaterialEnum} from "../../../../models/enum/material.enum"
+import {AddAuthorInterface} from "../../../../models/types/materials.interface";
 
 @Component({
   selector: 'app-personal-add-authors',
@@ -15,9 +16,8 @@ export class PersonalAddAuthorsComponent implements OnInit {
   private file!: File
 
   @Input() savingAuthorFile?: { id: number, name: string }
-  // TODO types
-  @Output() authorDataEmit = new EventEmitter<any>();
-  @Output() authorFile = new EventEmitter<{ event: FormData, tag: MaterialEnum }>();
+  @Output() authorDataEmit = new EventEmitter<AddAuthorInterface>()
+  @Output() authorFile = new EventEmitter<{ event: FormData, tag: MaterialEnum }>()
 
   constructor() {
   }
@@ -52,8 +52,7 @@ export class PersonalAddAuthorsComponent implements OnInit {
   }
 
   public onSubmit() {
-    // TODO types
-    let newAuthor: any = {
+    let newAuthor: AddAuthorInterface = {
       description: this.addAuthorForm.value.description,
       name: this.addAuthorForm.value.name,
       typeId: this.addAuthorForm.value.type_id,

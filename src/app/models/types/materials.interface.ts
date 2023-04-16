@@ -66,7 +66,15 @@
 /* ? Books-Courses interfaces========================*/
 
 /* ? Authors interfaces==============================*/
-  export interface AddAuthorInterface {}
+  export interface AddAuthorInterface {
+    name: string,
+    description: string,
+    typeId: number,
+    image?: {
+      id: number,
+      name: string
+    },
+  }
   export interface InputDataAuthor {}
   export interface AuthorsContent {
     description: string,

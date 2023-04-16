@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {AddBooksCoursesInterface} from "../../../models/types/materials.interface";
-import {HttpService} from "../../../services/http.service";
-import {MaterialEnum} from "../../../models/enum/material.enum";
+import {Component, OnInit} from '@angular/core'
+import {AddAuthorInterface, AddBooksCoursesInterface} from "../../../models/types/materials.interface"
+import {HttpService} from "../../../services/http.service"
+import {MaterialEnum} from "../../../models/enum/material.enum"
+import {NotificationsService} from "../../../services/notifications.service"
 
 @Component({
   selector: 'app-personal-add-materials',
@@ -10,41 +11,37 @@ import {MaterialEnum} from "../../../models/enum/material.enum";
 })
 export class PersonalAddMaterialsComponent implements OnInit {
 
-  public savingBookFile?: {id: number, name: string}
+  public savingBookFile?: { id: number, name: string }
 
-  public savingCourseFile?: {id: number, name: string}
+  public savingCourseFile?: { id: number, name: string }
 
-  public savingAuthorFile?: {id: number, name: string}
+  public savingAuthorFile?: { id: number, name: string }
 
   constructor(
     private httpService: HttpService,
-  ) { }
+    private notificationsService: NotificationsService,
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
-  // TODO переделать эту штуку сделать переиспользуемой
-
   public bookOrCourseEmit(event: AddBooksCoursesInterface): void {
     this.httpService.addBookOrCourse(event)
-      //TODO types
-      .subscribe((res: any) => {
-        //TODO delete
-        console.log(res)
-      }), (err: any) => {
-        //TODO add handler error
-      }
+      .subscribe({
+        next: () => {
+          this.notificationsService.openEventNotification('Материал успешно сохранен')
+        }
+      })
   }
 
-  //TODO types
-  public  authorEmit(event: any): void {
+  public authorEmit(event: AddAuthorInterface): void {
     this.httpService.addAuthor(event)
-      .subscribe((res: any) => {
-        //TODO delete
-        console.log(res)
-      }), (err: any) => {
-      //TODO add handler error
-    }
+      .subscribe({
+        next: () => {
+          this.notificationsService.openEventNotification('Автор успешно сохранен')
+        }
+      })
   }
 
   public fileEmit(data: { event: FormData, tag: MaterialEnum }): void {
@@ -62,10 +59,7 @@ export class PersonalAddMaterialsComponent implements OnInit {
         if (data.tag === MaterialEnum.author) {
           this.savingAuthorFile = item[0]
         }
-      }), (err: any) => {
-      //TODO add handler error
-    }
+      })
   }
-
 
 }

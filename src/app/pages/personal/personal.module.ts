@@ -15,6 +15,7 @@ import {MatInputModule} from "@angular/material/input";
 import {AuthorizationGuard} from "../../helpers/authorization.guard";
 import { PersonalAddCoursesComponent } from './personal-add-materials/personal-add-courses/personal-add-courses.component';
 import { PersonalAddAuthorsComponent } from './personal-add-materials/personal-add-authors/personal-add-authors.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 const allComponents = [
   PersonalComponent,
@@ -33,7 +34,8 @@ const allComponents = [
     MatIconModule,
     RouterModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule
   ],
   providers: [
     AuthorizationGuard,
