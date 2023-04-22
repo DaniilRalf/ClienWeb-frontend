@@ -1,9 +1,9 @@
-<div class="courses">
+<div class="books">
 
-  <div class="courses-body container">
+  <div class="books-body container">
 
     <div class="books-body-filter">
-      <h1>Курсы</h1>
+      <h1>Книги</h1>
       <mat-form-field appearance="fill">
         <mat-label>Select an option</mat-label>
         <mat-select [(value)]="queryParams.sort" (selectionChange)="sortChanged()">
@@ -21,16 +21,15 @@
       </span>
     </div>
 
-    <div class="courses-body-content">
-      <div class="courses-body-content-item" *ngFor="let courses of dataList$ | async">
-<!--        // TODO create course-item-->
-        <app-book-item [book]="courses" [routerLink]="['/courses', courses.id]"></app-book-item>
+    <div class="books-body-content">
+      <div class="books-body-content-item" *ngFor="let book of dataList$ | async">
+        <el-material-block [page]="'books'" [material]="book"></el-material-block>
       </div>
     </div>
 
   </div>
 
-  <!--  TODO russian translate paginator-->
+<!--  TODO russian translate paginator-->
   <div class="books-paginator">
     <mat-paginator showFirstLastButtons
                    (page)="pageChanged($event)"

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { HttpService } from "../../../services/http.service"
+import { HttpService } from "../../../helpers/services/http.service"
 import { UserInterface, UserOfLocalStorageInterface } from "../../../models/types/user-data.interface"
-import { UserService } from "../../../services/user.service"
+import { UserService } from "../../../helpers/services/user.service"
 import { take } from "rxjs"
-import { LocalStorageService } from "../../../services/local-storage.service"
+import { LocalStorageService } from "../../../helpers/services/local-storage.service"
 
 @Component({
   selector: 'app-personal',

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {BooksCoursesContent, InputDataBooksCourses, QueryParams} from "../../../models/types/materials.interface"
-import {HttpService} from "../../../services/http.service"
-import {LocalStorageService} from "../../../services/local-storage.service"
+import {HttpService} from "../../../helpers/services/http.service"
+import {LocalStorageService} from "../../../helpers/services/local-storage.service"
 import {BehaviorSubject, take} from "rxjs"
 import {PageEvent} from "@angular/material/paginator"
 

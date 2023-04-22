@@ -1,8 +1,8 @@
 import {Directive, EventEmitter, OnInit} from "@angular/core"
 import { BehaviorSubject, take } from "rxjs"
-import { BooksCoursesContent, InputDataBooksCourses, QueryParams } from "../../models/types/materials.interface"
-import { HttpService } from "../../services/http.service"
-import { LocalStorageService } from "../../services/local-storage.service"
+import { BooksCoursesContent, InputDataBooksCourses, QueryParams } from "../../../models/types/materials.interface"
+import { HttpService } from "../../../helpers/services/http.service"
+import { LocalStorageService } from "../../../helpers/services/local-storage.service"
 import { PageEvent } from "@angular/material/paginator"
 
 @Directive()

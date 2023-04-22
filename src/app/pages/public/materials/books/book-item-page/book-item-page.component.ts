@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core'
 import {Router} from "@angular/router"
 import {BehaviorSubject} from "rxjs"
-import {BooksCoursesContent} from "../../../../models/types/materials.interface"
-import {HttpService} from "../../../../services/http.service"
-import {environment} from "../../../../../environments/environment"
+import {BooksCoursesContent} from "../../../../../models/types/materials.interface"
+import {HttpService} from "../../../../../helpers/services/http.service"
+import {environment} from "../../../../../../environments/environment"
 
 @Component({
   selector: 'app-book-item-page',

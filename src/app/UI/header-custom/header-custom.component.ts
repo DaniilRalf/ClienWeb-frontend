@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core'
 import { MatDialog } from "@angular/material/dialog"
 import { ModalLoginAuthComponent } from "../modal-login-auth/modal-login-auth.component"
 import {filter, Observable, switchMap, take} from "rxjs"
-import { HttpService } from "../../services/http.service"
+import { HttpService } from "../../helpers/services/http.service"
 import {LoginOrRegistrationInputInterface, LoginRegistrationInterface} from "../../models/types/login-registration.interface"
-import { LocalStorageService } from "../../services/local-storage.service"
+import { LocalStorageService } from "../../helpers/services/local-storage.service"
 import { Router } from "@angular/router"
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 

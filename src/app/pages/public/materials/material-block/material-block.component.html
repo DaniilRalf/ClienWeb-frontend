@@ -1,0 +1,23 @@
+<div class="book-item">
+
+  <div class="name" shorten-text>{{material.title}}</div>
+
+  <div class="img" [routerLink]="['/' + page, material.id]">
+    <mat-icon class="img-mat-icon" *ngIf="!material?.image?.name">photo_library</mat-icon>
+    <img *ngIf="material.image" src="{{env.apiBaseUrl + 'img/' + material.image.name}}">
+  </div>
+
+    <div class="rate">
+      <div class="rate-like">
+        <mat-icon [ngClass]="{'rate-mat-icon': true, 'like': material.userRating === 1}"
+                  (click)="onReaction('like')"
+        >thumb_up</mat-icon><span>{{material.likes}}</span>
+      </div>
+      <div class="rate-dislike">
+        <mat-icon [ngClass]="{'rate-mat-icon': true, 'dislike': material.userRating === -1}"
+                  (click)="onReaction('dislike')"
+        >thumb_down</mat-icon><span>{{material.dislikes}}</span>
+      </div>
+    </div>
+
+</div>

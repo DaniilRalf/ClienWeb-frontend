@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core'
-import {LoginRegistrationInterface} from "../models/types/login-registration.interface"
+import {LoginRegistrationInterface} from "../../models/types/login-registration.interface"
 import {HttpClient} from "@angular/common/http"
-import {environment} from "../../environments/environment"
-import {BooksCoursesContent, InputDataBooksCourses, QueryParams} from "../models/types/materials.interface"
+import {environment} from "../../../environments/environment"
+import {BooksCoursesContent, InputDataBooksCourses, QueryParams} from "../../models/types/materials.interface"
 import {LocalStorageService} from "./local-storage.service"
 import {Observable} from "rxjs"
 

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core'
 import {AddAuthorInterface, AddBooksCoursesInterface} from "../../../models/types/materials.interface"
-import {HttpService} from "../../../services/http.service"
+import {HttpService} from "../../../helpers/services/http.service"
 import {MaterialEnum} from "../../../models/enum/material.enum"
-import {NotificationsService} from "../../../services/notifications.service"
+import {NotificationsService} from "../../../helpers/services/notifications.service"
 
 @Component({
   selector: 'app-personal-add-materials',
