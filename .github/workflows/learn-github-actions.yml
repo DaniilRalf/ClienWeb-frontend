@@ -16,7 +16,7 @@ jobs:
         run: npm i
 
       - name: 'build'
-        run: npm build
+        run: npm run build
 
       - name: 'show structure'
         run: ls -al
