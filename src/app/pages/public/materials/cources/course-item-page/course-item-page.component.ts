@@ -5,6 +5,8 @@ import {Router} from "@angular/router"
 import {HttpService} from "../../../../../helpers/services/http.service"
 import {environment} from "../../../../../../environments/environment";
 import {MaterialsService} from "../../materials.service";
+import {PreloaderTypesEnum} from "../../../../../models/enum/preloader-types.enum";
+import {NotificationsService} from "../../../../../helpers/services/notifications.service";
 
 @Component({
   selector: 'app-course-item-page',
@@ -23,6 +25,7 @@ export class CourseItemPageComponent implements OnInit {
     private router: Router,
     private httpService: HttpService,
     private materialService: MaterialsService,
+    private notificationService: NotificationsService,
   ) {}
 
   ngOnInit(): void {
@@ -35,9 +38,12 @@ export class CourseItemPageComponent implements OnInit {
   }
 
   private getActualCourse(): void {
+    this.notificationService.setPreloader({event: true, type: PreloaderTypesEnum.variant_2})
     this.httpService.getItemBookCourse(this.actualCourseId)
+      .pipe(take(1))
       .subscribe((itemCourse: BooksCoursesContent) => {
         this.actualCourse = itemCourse
+        this.notificationService.setPreloader({event: false, type: PreloaderTypesEnum.variant_2})
       })
   }
 

@@ -9,7 +9,6 @@ import {InfoComponent} from './info/info.component'
 import {MatPaginatorModule} from "@angular/material/paginator"
 import {MaterialBlockComponent} from './materials/material-block/material-block.component'
 import {BookItemPageComponent} from './materials/books/book-item-page/book-item-page.component'
-import {CourseItemComponent} from './materials/cources/course-item/course-item.component'
 import {MatSelectModule} from "@angular/material/select"
 import {CourseItemPageComponent} from './materials/cources/course-item-page/course-item-page.component';
 import { AuthorsComponent } from './authors/authors.component';
@@ -26,13 +25,14 @@ const allComponents = [
   InfoComponent,
   MaterialBlockComponent,
   BookItemPageComponent,
-  CourseItemComponent,
   CourseItemPageComponent,
   AuthorsComponent,
+  AuthorItemComponent,
+  AuthorItemPageComponent,
 ]
 
 @NgModule({
-  declarations: [...allComponents, AuthorItemComponent, AuthorItemPageComponent],
+  declarations: [...allComponents],
   exports: [...allComponents],
     imports: [
         CommonModule,

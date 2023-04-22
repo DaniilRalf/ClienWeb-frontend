@@ -1,7 +1,7 @@
 <app-header-custom></app-header-custom>
 
-<div class="preloader" *ngIf="(isActivePreloader | async)?.event">
-  <el-preloader [typePreloader]="(isActivePreloader | async)?.type"></el-preloader>
+<div class="preloader" *ngIf="isActivePreloader?.event">
+  <el-preloader [typePreloader]="isActivePreloader?.type"></el-preloader>
 </div>
 
 <router-outlet></router-outlet>

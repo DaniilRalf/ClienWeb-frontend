@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core'
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core'
 import {Router} from "@angular/router"
-import {BehaviorSubject, take} from "rxjs"
+import {take} from "rxjs"
 import {BooksCoursesContent} from "../../../../../models/types/materials.interface"
 import {HttpService} from "../../../../../helpers/services/http.service"
 import {environment} from "../../../../../../environments/environment"
 import {MaterialsService} from "../../materials.service";
+import {NotificationsService} from "../../../../../helpers/services/notifications.service";
+import {PreloaderTypesEnum} from "../../../../../models/enum/preloader-types.enum";
 
 @Component({
   selector: 'app-book-item-page',
@@ -21,8 +23,10 @@ export class BookItemPageComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private cd: ChangeDetectorRef,
     private httpService: HttpService,
     private materialService: MaterialsService,
+    private notificationService: NotificationsService,
   ) {
   }
 
@@ -36,9 +40,12 @@ export class BookItemPageComponent implements OnInit {
   }
 
   private getActualBook(): void {
+    this.notificationService.setPreloader({event: true, type: PreloaderTypesEnum.variant_2})
     this.httpService.getItemBookCourse(this.actualBookId)
+      .pipe(take(1))
       .subscribe((itemBook: BooksCoursesContent) => {
         this.actualBook = itemBook
+        this.notificationService.setPreloader({event: false, type: PreloaderTypesEnum.variant_2})
       })
   }
 

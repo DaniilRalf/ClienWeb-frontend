@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {MatSnackBar} from "@angular/material/snack-bar"
-import {BehaviorSubject, Observable} from "rxjs";
-import {PreloaderTypesEnum} from "../../models/enum/preloader-types.enum";
+import {BehaviorSubject, Observable} from "rxjs"
+import {PreloaderTypesEnum} from "../../models/enum/preloader-types.enum"
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +42,6 @@ export class NotificationsService {
     } else {
       this.isPreloaderActive$.next(data)
     }
-
   }
 
   /** Get state preloader*/

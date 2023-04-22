@@ -7,14 +7,14 @@
 
     <div class="rate">
     <div class="rate-like">
-      <mat-icon [ngClass]="{'rate-mat-icon': true, 'like': actualCourse.userRating === 1}"
+      <mat-icon [ngClass]="{'rate-mat-icon': true, 'like': actualCourse?.userRating === 1}"
                 (click)="onReaction('like')"
-      >thumb_up</mat-icon><span>{{actualCourse.likes}}</span>
+      >thumb_up</mat-icon><span>{{actualCourse?.likes}}</span>
     </div>
     <div class="rate-dislike">
-      <mat-icon [ngClass]="{'rate-mat-icon': true, 'dislike': actualCourse.userRating === -1}"
+      <mat-icon [ngClass]="{'rate-mat-icon': true, 'dislike': actualCourse?.userRating === -1}"
                 (click)="onReaction('dislike')"
-      >thumb_down</mat-icon><span>{{actualCourse.dislikes}}</span>
+      >thumb_down</mat-icon><span>{{actualCourse?.dislikes}}</span>
     </div>
   </div>
 

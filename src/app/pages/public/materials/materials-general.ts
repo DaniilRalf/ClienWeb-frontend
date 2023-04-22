@@ -25,7 +25,6 @@ export class MaterialGeneral implements OnInit {
   }
 
   private notificationService = AppInjector.get(NotificationsService)
-  private cd = AppInjector.get(ChangeDetectorRef)
 
   constructor(
     protected httpService: HttpService,
@@ -41,7 +40,6 @@ export class MaterialGeneral implements OnInit {
 
   private getAllCoursesData(): void {
     this.notificationService.setPreloader({event: true, type: PreloaderTypesEnum.variant_1})
-    this.cd.detectChanges();
     this.httpService.getAllBooksCourses(
       {
         itemType: this.itemType,

@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core'
+import {ChangeDetectorRef, Component, Injector, OnInit} from '@angular/core'
 import {NotificationsService} from "./helpers/services/notifications.service";
 import {Observable} from "rxjs";
 import {PreloaderTypesEnum} from "./models/enum/preloader-types.enum";
@@ -15,16 +15,22 @@ export class AppComponent implements OnInit{
 
   title = 'clientWeb-frontend'
 
-  isActivePreloader!: Observable<{event: boolean, type: PreloaderTypesEnum.variant_1}>
+  isActivePreloader!: {event: boolean, type: PreloaderTypesEnum}
 
   constructor(
     private injector: Injector,
     public notificationsService: NotificationsService,
+    private cd: ChangeDetectorRef,
   ) {
     AppInjector = this.injector
   }
 
   ngOnInit(): void {
-    this.isActivePreloader = this.notificationsService.getPreloader()
+    this.notificationsService.getPreloader()
+      .subscribe(item => {
+        this.isActivePreloader = item
+        this.cd.detectChanges()
+      })
+
   }
 }
