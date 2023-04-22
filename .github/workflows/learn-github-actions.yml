@@ -21,9 +21,6 @@ jobs:
       - name: 'show structure'
         run: ls -al
 
-      - name: 'get to build'
-        run: cd ./dist
-
       - name: deploy
         uses: appleboy/scp-action@v0.1.4
         with:
