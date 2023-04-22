@@ -4,6 +4,8 @@ import {HttpService} from "../../../helpers/services/http.service"
 import {LocalStorageService} from "../../../helpers/services/local-storage.service"
 import {BehaviorSubject, take} from "rxjs"
 import {PageEvent} from "@angular/material/paginator"
+import {NotificationsService} from "../../../helpers/services/notifications.service";
+import {PreloaderTypesEnum} from "../../../models/enum/preloader-types.enum";
 
 @Component({
   selector: 'app-authors',
@@ -27,7 +29,8 @@ export class AuthorsComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private notificationService: NotificationsService,
   ) {
   }
 
@@ -39,6 +42,7 @@ export class AuthorsComponent implements OnInit {
   }
 
   private getAllAuthors(): void {
+    this.notificationService.setPreloader({event: true, type: PreloaderTypesEnum.variant_1})
     this.httpService.getAllAuthors(
       {
         page: this.queryParams.page,
@@ -49,13 +53,11 @@ export class AuthorsComponent implements OnInit {
     ).pipe(take(1))
       // TODO types
       .subscribe((item: any) => {
-        console.log(item)
         this.queryParams.totalPages = item.totalPages
         this.queryParams.totalElements = item.totalElements
         this.dataList$.next(item.content)
-      }), (err: any) => {
-      //TODO add handler error
-    }
+        this.notificationService.setPreloader({event: false, type: PreloaderTypesEnum.variant_1})
+      })
   }
 
   public pageChanged(event: PageEvent) {

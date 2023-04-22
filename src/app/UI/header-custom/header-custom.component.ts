@@ -6,7 +6,6 @@ import { HttpService } from "../../helpers/services/http.service"
 import {LoginOrRegistrationInputInterface, LoginRegistrationInterface} from "../../models/types/login-registration.interface"
 import { LocalStorageService } from "../../helpers/services/local-storage.service"
 import { Router } from "@angular/router"
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-header-custom',

@@ -1,0 +1,60 @@
+@import "../../../assets/scss/index";
+
+.main {
+  opacity: 0.5;
+
+  .version-1 {
+    .heading {
+      width: calc(100vw - 40px);
+      height: 90px;
+      margin: 20px 20px 0 20px;
+      border-radius: 10px;
+
+      background: linear-gradient(-45deg, $grey_light_color, $grey_medium_color, $grey_light_color, $grey_medium_color);
+      background-size: 400% 400%;
+      animation: gradient 2s ease infinite;
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .item {
+        padding: 20px;
+
+        .header {
+          width: 250px;
+          height: 300px;
+          border-radius: 10px;
+          margin-bottom: 10px;
+
+          background: linear-gradient(-45deg, $grey_light_color, $grey_medium_color, $grey_light_color, $grey_medium_color);
+          background-size: 400% 400%;
+          animation: gradient 2s ease infinite;
+        }
+        .footer {
+          width: 250px;
+          height: 50px;
+          border-radius: 10px;
+
+          background: linear-gradient(-45deg, $grey_light_color, $grey_medium_color, $grey_light_color, $grey_medium_color);
+          background-size: 400% 400%;
+          animation: gradient 2s ease infinite;
+        }
+      }
+    }
+  }
+
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

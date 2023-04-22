@@ -1,9 +1,12 @@
-import {Directive, EventEmitter, OnInit} from "@angular/core"
+import {ChangeDetectorRef, Directive, EventEmitter, Inject, Injector, OnInit} from "@angular/core"
 import { BehaviorSubject, take } from "rxjs"
 import { BooksCoursesContent, InputDataBooksCourses, QueryParams } from "../../../models/types/materials.interface"
 import { HttpService } from "../../../helpers/services/http.service"
 import { LocalStorageService } from "../../../helpers/services/local-storage.service"
 import { PageEvent } from "@angular/material/paginator"
+import {NotificationsService} from "../../../helpers/services/notifications.service";
+import {AppInjector} from "../../../app.component";
+import {PreloaderTypesEnum} from "../../../models/enum/preloader-types.enum";
 
 @Directive()
 export class MaterialGeneral implements OnInit {
@@ -21,9 +24,12 @@ export class MaterialGeneral implements OnInit {
     totalElements: 0
   }
 
+  private notificationService = AppInjector.get(NotificationsService)
+  private cd = AppInjector.get(ChangeDetectorRef)
+
   constructor(
     protected httpService: HttpService,
-    protected localStorageService: LocalStorageService
+    protected localStorageService: LocalStorageService,
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +40,8 @@ export class MaterialGeneral implements OnInit {
   }
 
   private getAllCoursesData(): void {
+    this.notificationService.setPreloader({event: true, type: PreloaderTypesEnum.variant_1})
+    this.cd.detectChanges();
     this.httpService.getAllBooksCourses(
       {
         itemType: this.itemType,
@@ -47,6 +55,7 @@ export class MaterialGeneral implements OnInit {
         this.queryParams.totalPages = item.totalPages
         this.queryParams.totalElements = item.totalElements
         this.dataList$.next(item.content)
+        this.notificationService.setPreloader({event: false, type: PreloaderTypesEnum.variant_1})
       })
   }
 
