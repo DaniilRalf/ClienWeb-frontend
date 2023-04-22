@@ -32,4 +32,4 @@ jobs:
           password: 'CZnYq55w%VuA'
           port: '22'
           source: './client-web-frontend'
-          target: '../../var/www'
+          target: '/var/www'
