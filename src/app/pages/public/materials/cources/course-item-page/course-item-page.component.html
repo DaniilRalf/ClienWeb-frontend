@@ -1,30 +1,38 @@
 <div class="course-item-page container">
 
   <div class="img">
-    <mat-icon class="img-mat-icon" *ngIf="!(actualCourse$ | async)?.image?.name">add_a_photo</mat-icon>
-    <img *ngIf="(actualCourse$ | async)?.image?.name"
-         src="{{env.apiBaseUrl + 'img/' + (actualCourse$ | async)?.image?.name}}">
+    <mat-icon class="img-mat-icon" *ngIf="!actualCourse?.image?.name">photo_library</mat-icon>
+    <img *ngIf="actualCourse?.image?.name"
+         src="{{env.apiBaseUrl + 'img/' + actualCourse?.image?.name}}">
+
+    <div class="rate">
+    <div class="rate-like">
+      <mat-icon [ngClass]="{'rate-mat-icon': true, 'like': actualCourse.userRating === 1}"
+                (click)="onReaction('like')"
+      >thumb_up</mat-icon><span>{{actualCourse.likes}}</span>
+    </div>
+    <div class="rate-dislike">
+      <mat-icon [ngClass]="{'rate-mat-icon': true, 'dislike': actualCourse.userRating === -1}"
+                (click)="onReaction('dislike')"
+      >thumb_down</mat-icon><span>{{actualCourse.dislikes}}</span>
+    </div>
+  </div>
+
   </div>
 
   <div class="course-item-page-content">
     <h1 class="course-item-page-content-title">
-      {{(actualCourse$ | async)?.title}}
+      {{actualCourse?.title}}
     </h1>
     <p class="course-item-page-content-desc">
-      <span>Описание: </span>{{(actualCourse$ | async)?.description}}
+      <span>Описание: </span>{{actualCourse?.description}}
     </p>
     <p class="course-item-page-content-duration">
-      <span>Продолжительность чтения: </span>{{(actualCourse$ | async)?.duration}}<span> ч.</span>
-    </p>
-    <p class="course-item-page-content-rate">
-      <span>Рейтинг: </span>{{(actualCourse$ | async)?.rate}}
-    </p>
-    <p class="course-item-page-content-popularity">
-      <span>Популярность: </span>{{(actualCourse$ | async)?.popularity}}
+      <span>Время просмотра: </span>{{actualCourse?.duration}}<span> ч.</span>
     </p>
     <p class="course-item-page-content-authors">
       <span>Авторы: </span>
-      <ng-container *ngFor="let author of (actualCourse$ | async)?.authors">{{author.name}}</ng-container>
+      <ng-container *ngFor="let author of actualCourse?.authors">{{author.name}}</ng-container>
     </p>
   </div>
 

@@ -17,6 +17,7 @@ import { AuthorItemComponent } from './authors/author-item/author-item.component
 import { AuthorItemPageComponent } from './authors/author-item-page/author-item-page.component'
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {CustomDirectivesModule} from "../../helpers/directives/custom-directives.module";
+import {MaterialsService} from "./materials/materials.service";
 
 const allComponents = [
   PublicComponent,
@@ -42,7 +43,7 @@ const allComponents = [
         MatTooltipModule,
         CustomDirectivesModule
     ],
-  providers: []
+  providers: [MaterialsService]
 })
 export class PublicModule {
 }

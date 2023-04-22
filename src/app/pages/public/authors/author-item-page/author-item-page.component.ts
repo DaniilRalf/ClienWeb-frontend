@@ -3,6 +3,7 @@ import {BehaviorSubject} from "rxjs"
 import {BooksCoursesContent} from "../../../../models/types/materials.interface"
 import {Router} from "@angular/router"
 import {HttpService} from "../../../../helpers/services/http.service"
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-author-item-page',
@@ -10,6 +11,8 @@ import {HttpService} from "../../../../helpers/services/http.service"
   styleUrls: ['./author-item-page.component.scss']
 })
 export class AuthorItemPageComponent implements OnInit {
+
+  public env = environment
 
   private actualAuthorId!: number
 

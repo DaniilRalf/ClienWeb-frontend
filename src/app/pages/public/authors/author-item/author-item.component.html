@@ -1,8 +1,15 @@
 <div class="author-item">
-  <div class="author-item-img">
+
+<!--  <div class="img">-->
+<!--    <img *ngIf="author.image" src="{{env.apiBaseUrl + 'img/' + author.image.name}}">-->
+<!--  </div>-->
+  <div class="img" [routerLink]="['/authors', author.id]">
+    <mat-icon class="img-mat-icon" *ngIf="!author?.image?.name">person</mat-icon>
     <img *ngIf="author.image" src="{{env.apiBaseUrl + 'img/' + author.image.name}}">
   </div>
-  <div class="author-item-txt">
+
+  <div class="txt">
     <div class="name">{{author.name}}</div>
   </div>
+
 </div>

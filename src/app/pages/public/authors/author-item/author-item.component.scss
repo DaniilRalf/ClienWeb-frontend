@@ -6,19 +6,26 @@
   padding: 10px;
   overflow: hidden;
 
-  &-img {
+  .img {
     height: 250px;
     margin-bottom: 15px;
     border-radius: 50%;
-    background-color: #3f51b5;
+    background-color: $grey_medium_color;
     overflow: hidden;
+    cursor: pointer;
+
+    &-mat-icon {
+      transform: scale(9) translateY(12px) translateX(11.5px);
+      color: rgba(0,0,0,.2);
+    }
 
     img {
       min-height: 100%;
       max-width: 100%;
     }
   }
-  &-txt {
+
+  .txt {
     display: flex;
     justify-content: space-between;
     background-color: $grey_light_color;

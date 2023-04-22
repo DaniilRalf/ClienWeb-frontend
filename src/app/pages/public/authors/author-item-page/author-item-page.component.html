@@ -1,6 +1,10 @@
 <div class="author-item-page container">
 
-  <div class="author-item-page-img"></div>
+  <div class="img">
+    <mat-icon class="img-mat-icon" *ngIf="!(actualAuthor$ | async)?.image?.name">person</mat-icon>
+    <img *ngIf="(actualAuthor$ | async)?.image?.name"
+         src="{{env.apiBaseUrl + 'img/' + (actualAuthor$ | async)?.image?.name}}">
+  </div>
 
   <div class="author-item-page-content">
     <h1 class="author-item-page-content-desc">

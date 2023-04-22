@@ -22,7 +22,7 @@
 
     <div class="authors-body-content">
       <div class="authors-body-content-item" *ngFor="let author of dataList$ | async">
-        <app-author-item [author]="author" [routerLink]="['/authors', author.id]"></app-author-item>
+        <app-author-item [author]="author"></app-author-item>
       </div>
     </div>
 

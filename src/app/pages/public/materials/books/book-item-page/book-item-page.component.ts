@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core'
 import {Router} from "@angular/router"
-import {BehaviorSubject} from "rxjs"
+import {BehaviorSubject, take} from "rxjs"
 import {BooksCoursesContent} from "../../../../../models/types/materials.interface"
 import {HttpService} from "../../../../../helpers/services/http.service"
 import {environment} from "../../../../../../environments/environment"
+import {MaterialsService} from "../../materials.service";
 
 @Component({
   selector: 'app-book-item-page',
@@ -16,11 +17,12 @@ export class BookItemPageComponent implements OnInit {
 
   private actualBookId!: number
 
-  public actualBook$ = new BehaviorSubject<BooksCoursesContent>({} as BooksCoursesContent)
+  public actualBook!: BooksCoursesContent
 
   constructor(
     private router: Router,
     private httpService: HttpService,
+    private materialService: MaterialsService,
   ) {
   }
 
@@ -36,8 +38,14 @@ export class BookItemPageComponent implements OnInit {
   private getActualBook(): void {
     this.httpService.getItemBookCourse(this.actualBookId)
       .subscribe((itemBook: BooksCoursesContent) => {
-        this.actualBook$.next(itemBook)
+        this.actualBook = itemBook
       })
+  }
+
+  public onReaction(event: 'like' | 'dislike'): void {
+    const buffer = this.materialService.onReaction(this.actualBook, event)
+    this.actualBook = buffer.material
+    this.httpService.addReaction(buffer.eventData).pipe(take(1)).subscribe()
   }
 
 }

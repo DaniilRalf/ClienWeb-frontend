@@ -3,6 +3,7 @@ import {BooksCoursesContent} from "../../../../models/types/materials.interface"
 import {environment} from "../../../../../environments/environment"
 import {HttpService} from "../../../../helpers/services/http.service";
 import {take} from "rxjs";
+import {MaterialsService} from "../materials.service";
 
 @Component({
   selector: 'el-material-block',
@@ -17,66 +18,19 @@ export class MaterialBlockComponent implements OnInit {
 
   @Input() public page!: string
 
-  constructor(private httpService: HttpService) {
+  constructor(
+    private httpService: HttpService,
+    private materialService: MaterialsService,
+  ) {
   }
 
   ngOnInit(): void {
   }
 
   public onReaction(event: 'like' | 'dislike'): void {
-    const eventData = {itemId: this.material.id, value: 0} as { itemId: number, value: 1 | 0 | -1 }
-    if (event === 'like') {
-      if (!this.material.userRating) {
-        eventData['value'] = 1
-        ++this.material.likes
-        this.material.userRating = 1
-        this.changeReaction(eventData)
-        return
-      }
-      if (this.material.userRating === -1) {
-        eventData['value'] = 1
-        ++this.material.likes
-        --this.material.dislikes
-        this.material.userRating = 1
-        this.changeReaction(eventData)
-        return
-      }
-      if (this.material.userRating === 1) {
-        eventData['value'] = 0
-        --this.material.likes
-        this.material.userRating = 0
-        this.changeReaction(eventData)
-        return
-      }
-    }
-    if (event === 'dislike') {
-      if (!this.material.userRating) {
-        eventData['value'] = -1
-        ++this.material.dislikes
-        this.material.userRating = -1
-        this.changeReaction(eventData)
-        return
-      }
-      if (this.material.userRating === 1) {
-        eventData['value'] = -1
-        ++this.material.dislikes
-        --this.material.likes
-        this.material.userRating = -1
-        this.changeReaction(eventData)
-        return
-      }
-      if (this.material.userRating === -1) {
-        eventData['value'] = 0
-        --this.material.dislikes
-        this.material.userRating = 0
-        this.changeReaction(eventData)
-        return
-      }
-    }
-  }
-
-  private changeReaction(eventData: { itemId: number, value: 1 | 0 | -1 }): void {
-    this.httpService.addReaction(eventData).pipe(take(1)).subscribe()
+    const buffer = this.materialService.onReaction(this.material, event)
+    this.material = buffer.material
+    this.httpService.addReaction(buffer.eventData).pipe(take(1)).subscribe()
   }
 
 }
