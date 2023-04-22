@@ -14,3 +14,6 @@ jobs:
 
       - name: 'install'
         run: npm i
+
+      - name: 'show structure'
+        run: ls -al
