@@ -1,0 +1,43 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  test-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v1
+        name: 'setup node'
+        with:
+          node-version: '18.x'
+
+      - name: 'install'
+        run: npm i
+
+      - name: 'build'
+        run: npm run build
+
+      - name: 'show structure'
+        run: ls -al
+
+      - name: deploy
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: '62.217.182.204'
+          username: 'root'
+          password: 'CZnYq55w%VuA'
+          port: '22'
+          source: 'dist/client-web-frontend/*'
+          target: '../../var/www/front'
+
+      - name: 'start-test-command'
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: '62.217.182.204'
+          username: 'root'
+          password: 'CZnYq55w%VuA'
+          port: '22'
+          script: |
+            ls -al
+            sudo service nginx restart
