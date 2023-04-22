@@ -6,6 +6,19 @@
     height: calc(100vh - 120px);
     overflow-y: scroll;
 
+    &-heading {
+      display: flex;
+      align-items: center;
+      padding: 20px 0 40px 0;
+
+      h1 {
+        font-size: 60px;
+        color: $grey_strong_color;
+        text-transform: uppercase;
+        margin-right: 50px;
+      }
+    }
+
     &-content {
       display: grid;
       grid-template-columns: repeat(auto-fill, 260px);

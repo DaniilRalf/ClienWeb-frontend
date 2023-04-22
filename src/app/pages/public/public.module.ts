@@ -12,11 +12,13 @@ import {BookItemPageComponent} from './materials/books/book-item-page/book-item-
 import {MatSelectModule} from "@angular/material/select"
 import {CourseItemPageComponent} from './materials/cources/course-item-page/course-item-page.component';
 import { AuthorsComponent } from './authors/authors.component';
-import { AuthorItemComponent } from './authors/author-item/author-item.component';
+import { AuthorItemComponent } from './authors/author-item/author-item.component'
 import { AuthorItemPageComponent } from './authors/author-item-page/author-item-page.component'
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {CustomDirectivesModule} from "../../helpers/directives/custom-directives.module";
-import {MaterialsService} from "./materials/materials.service";
+import {MatTooltipModule} from "@angular/material/tooltip"
+import {CustomDirectivesModule} from "../../helpers/directives/custom-directives.module"
+import {MaterialsService} from "./materials/materials.service"
+import { MaterialsActionsComponent } from './materials/materials-actions/materials-actions.component';
+import { AuthorsActionsComponent } from './authors/authors-actions/authors-actions.component'
 
 const allComponents = [
   PublicComponent,
@@ -29,10 +31,11 @@ const allComponents = [
   AuthorsComponent,
   AuthorItemComponent,
   AuthorItemPageComponent,
+  MaterialsActionsComponent,
 ]
 
 @NgModule({
-  declarations: [...allComponents],
+  declarations: [...allComponents, AuthorsActionsComponent],
   exports: [...allComponents],
     imports: [
         CommonModule,

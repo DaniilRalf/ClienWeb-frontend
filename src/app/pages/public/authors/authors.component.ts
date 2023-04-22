@@ -16,7 +16,7 @@ export class AuthorsComponent implements OnInit {
 
   public dataList$ = new BehaviorSubject<any[]>([])
 
-  private queryParamKey = 'authors'
+  private queryParamKey = 'queryParamAuthors'
 
   public queryParams: QueryParams = {
     page: 0,
@@ -67,7 +67,8 @@ export class AuthorsComponent implements OnInit {
     this.getAllAuthors()
   }
 
-  public sortChanged(): void {
+  public sortChanged(event: string): void {
+    this.queryParams.sort = event
     this.changeQueryParams()
     this.getAllAuthors()
   }

@@ -2,22 +2,13 @@
 
   <div class="authors-body container">
 
-    <div class="authors-body-filter">
+    <div class="authors-body-heading">
       <h1>Авторы</h1>
-      <mat-form-field appearance="fill">
-        <mat-label>Select an option</mat-label>
-        <mat-select [(value)]="queryParams.sort" (selectionChange)="sortChanged()">
-          <mat-option value="name">Название</mat-option>
-          <mat-option value="description">Описание</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <span class="books-body-filter" (click)="refreshQueryParams()">
-        <mat-icon
-          matTooltip="Info about the action"
-          [matTooltipPosition]="'above'"
-          class="icon">refresh
-        </mat-icon>
-      </span>
+      <div class="authors-body-filter">
+        <el-authors-actions (sortChangedEmit)="sortChanged($event)"
+                            (refreshQueryParamsEmit)="refreshQueryParams()"
+        ></el-authors-actions>
+      </div>
     </div>
 
     <div class="authors-body-content">

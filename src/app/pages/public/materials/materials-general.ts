@@ -64,7 +64,8 @@ export class MaterialGeneral implements OnInit {
     this.getAllCoursesData()
   }
 
-  public sortChanged(): void {
+  public sortChanged(event: string): void {
+    this.queryParams.sort = event
     this.changeQueryParams()
     this.getAllCoursesData()
   }

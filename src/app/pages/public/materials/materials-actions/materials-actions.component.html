@@ -1,0 +1,22 @@
+<div class="actions">
+
+  <div class="actions-item-action">
+    <mat-form-field appearance="fill">
+      <mat-label>Тип сортировки</mat-label>
+      <mat-select [(value)]="sort" (selectionChange)="sortChanged()">
+        <mat-option value="title">Название</mat-option>
+        <mat-option value="rate">Рейтинг</mat-option>
+        <mat-option value="popularity">Популярность</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="actions-item-action refresh" (click)="refreshQueryParams()">
+    <mat-icon
+      matTooltip="Сбросить все фильтры"
+      [matTooltipPosition]="'above'"
+      class="icon">refresh
+    </mat-icon>
+  </div>
+
+</div>

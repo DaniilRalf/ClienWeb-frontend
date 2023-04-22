@@ -2,23 +2,13 @@
 
   <div class="books-body container">
 
-    <div class="books-body-filter">
+    <div class="books-body-heading">
       <h1>Книги</h1>
-      <mat-form-field appearance="fill">
-        <mat-label>Select an option</mat-label>
-        <mat-select [(value)]="queryParams.sort" (selectionChange)="sortChanged()">
-          <mat-option value="title">Название</mat-option>
-          <mat-option value="rate">Рейтинг</mat-option>
-          <mat-option value="popularity">Популярность</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <span class="books-body-filter" (click)="refreshQueryParams()">
-        <mat-icon
-          matTooltip="Info about the action"
-          [matTooltipPosition]="'above'"
-          class="icon">refresh
-        </mat-icon>
-      </span>
+      <div class="books-body-filter">
+        <el-materials-actions (sortChangedEmit)="sortChanged($event)"
+                          (refreshQueryParamsEmit)="refreshQueryParams()"
+        ></el-materials-actions>
+      </div>
     </div>
 
     <div class="books-body-content">

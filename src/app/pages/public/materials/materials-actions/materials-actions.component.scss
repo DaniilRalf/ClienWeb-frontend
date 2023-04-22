@@ -1,0 +1,17 @@
+@import "../../../../../assets/scss/index";
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  &-item-action {
+    cursor: pointer;
+    margin-right: 20px;
+  }
+}
+
+.refresh {
+  padding: 11px;
+  background-color: $grey_light_color;
+  border-radius: 5px;
+}
