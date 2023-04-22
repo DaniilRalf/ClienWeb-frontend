@@ -4,6 +4,8 @@ import {BooksCoursesContent} from "../../../../models/types/materials.interface"
 import {Router} from "@angular/router"
 import {HttpService} from "../../../../helpers/services/http.service"
 import {environment} from "../../../../../environments/environment";
+import {NotificationsService} from "../../../../helpers/services/notifications.service";
+import {PreloaderTypesEnum} from "../../../../models/enum/preloader-types.enum";
 
 @Component({
   selector: 'app-author-item-page',
@@ -22,6 +24,7 @@ export class AuthorItemPageComponent implements OnInit {
   constructor(
     private router: Router,
     private httpService: HttpService,
+    private notificationService: NotificationsService,
   ) {
   }
 
@@ -35,11 +38,12 @@ export class AuthorItemPageComponent implements OnInit {
   }
 
   private getActualAuthors(): void {
+    this.notificationService.setPreloader({event: true, type: PreloaderTypesEnum.variant_2})
     this.httpService.getItemAuthor(this.actualAuthorId)
       // TODO types
       .subscribe((itemAuthor: any) => {
         this.actualAuthor$.next(itemAuthor)
-        console.log(itemAuthor)
+        this.notificationService.setPreloader({event: false, type: PreloaderTypesEnum.variant_2})
       })
   }
 
