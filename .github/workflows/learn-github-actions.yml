@@ -27,6 +27,6 @@ jobs:
           host: '62.217.182.204'
           username: 'root'
           password: 'CZnYq55w%VuA'
-          port: '80'
+          port: '22'
           source: './dist/client-web-frontend'
           target: 'var/www/front'
