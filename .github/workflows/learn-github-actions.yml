@@ -28,5 +28,5 @@ jobs:
           username: 'root'
           password: 'CZnYq55w%VuA'
           port: '22'
-          source: './dist/client-web-frontend'
+          source: '~/client-web-frontend'
           target: '../../var/www'
