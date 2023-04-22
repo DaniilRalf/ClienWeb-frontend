@@ -3,6 +3,7 @@ import {Router} from "@angular/router"
 import {BehaviorSubject} from "rxjs"
 import {BooksCoursesContent} from "../../../../models/types/materials.interface"
 import {HttpService} from "../../../../services/http.service"
+import {environment} from "../../../../../environments/environment"
 
 @Component({
   selector: 'app-book-item-page',
@@ -10,6 +11,8 @@ import {HttpService} from "../../../../services/http.service"
   styleUrls: ['./book-item-page.component.scss']
 })
 export class BookItemPageComponent implements OnInit {
+
+  public env = environment
 
   private actualBookId!: number
 

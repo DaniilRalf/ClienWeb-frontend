@@ -2,26 +2,60 @@
 
 .book-item {
   width: 250px;
-  height: 320px;
+  height: 350px;
   padding: 10px;
   border-radius: 10px;
   overflow: hidden;
   background-color: $grey_light_color;
 
-  &-img {
+  .name {
+    padding: 10px;
+  }
+
+  .img {
     height: 250px;
     margin-bottom: 15px;
     border-radius: 10px;
-    background-color: #3f51b5;
+    background-color: $grey_medium_color;
     overflow: hidden;
+    cursor: pointer;
+
+    &-mat-icon {
+      transform: scale(4) translateY(30px) translateX(25px);
+      color: rgba(0,0,0,.2);
+    }
 
     img {
       min-height: 100%;
       max-width: 100%;
     }
   }
-  &-txt {
+
+  .rate {
+    padding: 0 10px 0 10px;
     display: flex;
     justify-content: space-between;
+
+    &-like, &-dislike {
+      display: flex;
+      align-items: end;
+
+      span {
+        color: $grey_medium_color;
+      }
+    }
+
+    &-mat-icon {
+      cursor: pointer;
+      color: $grey_medium_color;
+      margin-right: 7px;
+    }
   }
+}
+
+.like {
+  color: $main_color!important;
+}
+.dislike {
+  color: $red_light_color!important;
 }

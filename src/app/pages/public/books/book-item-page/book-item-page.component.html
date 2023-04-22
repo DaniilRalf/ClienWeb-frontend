@@ -1,6 +1,10 @@
 <div class="book-item-page container">
 
-  <div class="book-item-page-img"></div>
+  <div class="img">
+    <mat-icon class="img-mat-icon" *ngIf="!(actualBook$ | async)?.image?.name">add_a_photo</mat-icon>
+    <img *ngIf="(actualBook$ | async)?.image?.name"
+         src="{{env.apiBaseUrl + 'img/' + (actualBook$ | async)?.image?.name}}">
+  </div>
 
   <div class="book-item-page-content">
     <h1 class="book-item-page-content-title">

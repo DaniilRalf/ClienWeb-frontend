@@ -1,9 +1,23 @@
 <div class="book-item">
-  <div class="book-item-img">
+
+  <div class="name" shorten-text>{{book.title}}</div>
+
+  <div class="img" [routerLink]="['/books', book.id]">
+    <mat-icon class="img-mat-icon" *ngIf="!book?.image?.name">photo_library</mat-icon>
     <img *ngIf="book.image" src="{{env.apiBaseUrl + 'img/' + book.image.name}}">
   </div>
-  <div class="book-item-txt">
-    <div class="name">{{book.title}}</div>
-    <div class="rate">{{book.rate}}</div>
-  </div>
+
+    <div class="rate">
+      <div class="rate-like">
+        <mat-icon [ngClass]="{'rate-mat-icon': true, 'like': book.userRating === 1}"
+                  (click)="onReaction('like')"
+        >thumb_up</mat-icon><span>{{book.likes}}</span>
+      </div>
+      <div class="rate-dislike">
+        <mat-icon [ngClass]="{'rate-mat-icon': true, 'dislike': book.userRating === -1}"
+                  (click)="onReaction('dislike')"
+        >thumb_down</mat-icon><span>{{book.dislikes}}</span>
+      </div>
+    </div>
+
 </div>

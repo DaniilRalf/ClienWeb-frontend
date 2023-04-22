@@ -59,9 +59,12 @@
       name: string
     },
     popularity: number
-    rate: number,
     title: string,
     typeId: number,
+    rate: number,
+    likes: number,
+    dislikes: number,
+    userRating: number,
   }
 /* ? Books-Courses interfaces========================*/
 

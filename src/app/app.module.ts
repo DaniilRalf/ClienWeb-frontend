@@ -8,9 +8,9 @@ import {PublicModule} from "./pages/public/public.module"
 import {UiModule} from "./UI/ui.module"
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http"
 import {PersonalModule} from "./pages/personal/personal.module"
-import {MainInterceptor} from "./helpers/main.interceptor"
-import {ErrorInterceptor} from "./helpers/error.interceptor"
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MainInterceptor} from "./helpers/interceptors/main.interceptor"
+import {ErrorInterceptor} from "./helpers/interceptors/error.interceptor"
+import {MatSnackBarModule} from "@angular/material/snack-bar"
 
 @NgModule({
   declarations: [

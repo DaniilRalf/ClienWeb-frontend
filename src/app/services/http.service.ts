@@ -92,6 +92,12 @@ export class HttpService {
     )
   }
 
+  public addReaction(data: {itemId?: number, authorId?: number, value: 1 | 0 | -1}): Observable<Object> {
+    return this.http.post<Object>(
+      environment.apiBaseUrl + 'api/ratings/save', data
+    )
+  }
+
   /* ? MATERIALS --------------------------------------------*/
 
 

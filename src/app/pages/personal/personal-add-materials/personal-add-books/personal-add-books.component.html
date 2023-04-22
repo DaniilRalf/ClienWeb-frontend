@@ -1,8 +1,10 @@
 <div class="add-book">
+
   <div class="img" (click)="inputFile.click()">
     <mat-icon class="img-mat-icon" *ngIf="!savingBookFile">add_a_photo</mat-icon>
     <img *ngIf="savingBookFile" src="{{env.apiBaseUrl + 'img/' + savingBookFile.name}}">
   </div>
+
   <form class="form"
         [formGroup]="addBookForm"
         (ngSubmit)="onSubmit()"

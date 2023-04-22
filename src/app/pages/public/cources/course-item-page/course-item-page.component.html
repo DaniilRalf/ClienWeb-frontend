@@ -1,6 +1,10 @@
 <div class="course-item-page container">
 
-  <div class="course-item-page-img"></div>
+  <div class="img">
+    <mat-icon class="img-mat-icon" *ngIf="!(actualCourse$ | async)?.image?.name">add_a_photo</mat-icon>
+    <img *ngIf="(actualCourse$ | async)?.image?.name"
+         src="{{env.apiBaseUrl + 'img/' + (actualCourse$ | async)?.image?.name}}">
+  </div>
 
   <div class="course-item-page-content">
     <h1 class="course-item-page-content-title">

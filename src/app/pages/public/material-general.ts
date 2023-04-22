@@ -47,9 +47,7 @@ export class MaterialGeneral implements OnInit {
         this.queryParams.totalPages = item.totalPages
         this.queryParams.totalElements = item.totalElements
         this.dataList$.next(item.content)
-      }), (err: any) => {
-      //TODO add handler error
-    }
+      })
   }
 
   public pageChanged(event: PageEvent) {

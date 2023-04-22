@@ -8,7 +8,7 @@ import {BooksComponent} from "./pages/public/books/books.component"
 import {CoursesComponent} from "./pages/public/cources/courses.component"
 import {InfoComponent} from "./pages/public/info/info.component"
 import {BookItemPageComponent} from "./pages/public/books/book-item-page/book-item-page.component"
-import {AuthorizationGuard} from "./helpers/authorization.guard"
+import {AuthorizationGuard} from "./helpers/guards/authorization.guard"
 import {CourseItemPageComponent} from "./pages/public/cources/course-item-page/course-item-page.component"
 import {AuthorsComponent} from "./pages/public/authors/authors.component";
 import {AuthorItemPageComponent} from "./pages/public/authors/author-item-page/author-item-page.component";

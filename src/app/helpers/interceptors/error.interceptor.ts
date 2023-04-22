@@ -6,8 +6,8 @@ import {
 } from '@angular/common/http'
 import {catchError, Observable, of} from 'rxjs'
 import {Router} from "@angular/router"
-import {LocalStorageService} from "../services/local-storage.service"
-import {NotificationsService} from "../services/notifications.service"
+import {LocalStorageService} from "../../services/local-storage.service"
+import {NotificationsService} from "../../services/notifications.service"
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

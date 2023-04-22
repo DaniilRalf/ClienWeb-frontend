@@ -23,7 +23,7 @@
 
     <div class="books-body-content">
       <div class="books-body-content-item" *ngFor="let book of dataList$ | async">
-        <app-book-item [book]="book" [routerLink]="['/books', book.id]"></app-book-item>
+        <app-book-item [book]="book"></app-book-item>
       </div>
     </div>
 
