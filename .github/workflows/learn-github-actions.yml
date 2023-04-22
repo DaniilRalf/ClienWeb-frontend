@@ -20,3 +20,13 @@ jobs:
 
       - name: 'show structure'
         run: ls -al
+
+      - name: deploy
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: '62.217.182.204'
+          username: 'root'
+          password: 'CZnYq55w%VuA'
+          port: '80'
+          source: './dist/client-web-frontend'
+          target: 'var/www/front'
