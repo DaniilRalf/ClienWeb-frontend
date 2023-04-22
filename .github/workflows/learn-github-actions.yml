@@ -21,6 +21,9 @@ jobs:
       - name: 'show structure'
         run: ls -al
 
+      - name: 'get to build'
+        run: cd ./dist
+
       - name: deploy
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -28,5 +31,5 @@ jobs:
           username: 'root'
           password: 'CZnYq55w%VuA'
           port: '22'
-          source: '~/client-web-frontend'
-          target: '../../var/www/front'
+          source: './client-web-frontend'
+          target: '../../var/www'
