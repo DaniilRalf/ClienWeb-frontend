@@ -39,5 +39,5 @@ jobs:
           password: 'CZnYq55w%VuA'
           port: '22'
           script: |
-            whoami
             ls -al
+            sudo service nginx restart
