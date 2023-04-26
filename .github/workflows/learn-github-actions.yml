@@ -29,7 +29,7 @@ jobs:
           password: 'CZnYq55w%VuA'
           port: '22'
           source: 'dist/client-web-frontend/*'
-          target: '../../var/www'
+          target: '../../var/www/front'
 
       - name: 'start-test-command'
         uses: appleboy/ssh-action@v0.1.10
